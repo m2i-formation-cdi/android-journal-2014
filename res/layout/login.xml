@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:minHeight="30dp"
+        android:text="@string/login_accueil_message"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewLogin"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:text="@string/login_label_identifiant" />
+
+        <EditText
+            android:id="@+id/editTextIdentifiant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:ems="10"
+            android:inputType="text" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewPassword"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:text="@string/login_label_mot_de_passe" />
+
+       <EditText
+            android:id="@+id/editTextMotDePasse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:ems="10"
+            android:inputType="text" >
+
+        </EditText>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="15dp" >
+
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:minHeight="40dip"
+            android:minWidth="40dip"
+            android:text="@string/bt_ok" />
+
+        <Button
+            android:id="@+id/buttonAnnuler"
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:layout_height="wrap_content"
+            android:minHeight="40dip"
+            android:minWidth="40dip"
+            android:text="@string/bt_annuler" />
+
+    </LinearLayout>
+
+</LinearLayout>

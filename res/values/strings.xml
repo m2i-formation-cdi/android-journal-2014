@@ -1,5 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AppJournal2014</string>
-
+    <string name="app_name">Journal 2014</string>
+    
+    <!-- TEXTES COMMUNS -->
+    <string name="bt_ok">OK</string>
+    <string name="bt_annuler">ANNULER</string>
+    <string name="bt_valider">VALIDER</string>
+    
+    <!-- LOGIN ACTIVITY -->
+    <string name="login_titre_fenetre">Login</string>
+    <string name="login_accueil_message">Veuillez vous identifier</string>
+    <string name="login_label_identifiant">Identifiant</string>
+    <string name="login_label_mot_de_passe">Mot de passe</string>
 </resources>
