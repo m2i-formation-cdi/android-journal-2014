@@ -6,11 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Login extends Activity {
 
 	private EditText editTextIdentifiant;
 	private EditText editTextMotDePasse;
+	private TextView textViewErreur;
 	private Button btOk;
 	private Button btAnnuler;
 	
@@ -25,6 +27,33 @@ public class Login extends Activity {
 		btAnnuler = (Button) findViewById(R.id.buttonAnnuler);
 		editTextIdentifiant = (EditText) findViewById(R.id.editTextIdentifiant);
 		editTextMotDePasse = (EditText) findViewById(R.id.editTextMotDePasse);
+		textViewErreur = (TextView) findViewById(R.id.textViewLoginErreur);
 		
+	}
+	/**
+	 * Validation de la validité de la saisie de l'identifiant et du mot de passe
+	 * @return boolean
+	 */
+	private boolean validerSaisie(){
+		//Instanciation et initialisation d'un StringBuilder pour le message d'erreur 
+		StringBuilder sbErreur = new StringBuilder("Veuillez corriger les erreurs suivantes");
+		boolean saisieOk = true;
+		
+		//Contrôle de l'identifiant
+		if(editTextIdentifiant.equals("")){
+			sbErreur.append("\nVous devez saisir un identifiant");
+			saisieOk = false;
+		}
+		//Contrôle du mot de passe
+		if(editTextMotDePasse.equals("")){
+			sbErreur.append("\nVous devez saisir un mot de passe");
+			saisieOk = false;
+		}
+		//Affichage du message d'erreur
+		if(! saisieOk){
+			textViewErreur.setText(sbErreur.toString());
+		}
+		
+		return saisieOk;
 	}
 }

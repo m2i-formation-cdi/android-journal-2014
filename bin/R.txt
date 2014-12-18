@@ -400,7 +400,7 @@ int id split_action_bar 0x7f090004
 int id submit_area 0x7f09003c
 int id tabMode 0x7f09000c
 int id textViewLogin 0x7f090041
-int id textViewMessage 0x7f090040
+int id textViewLoginErreur 0x7f090040
 int id textViewPassword 0x7f090043
 int id title 0x7f090027
 int id up 0x7f090001
