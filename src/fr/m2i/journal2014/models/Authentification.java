@@ -1,6 +1,12 @@
 package fr.m2i.journal2014.models;
 
-
+/**
+ * Cette classe est chargée d'authentifier un utilisateur 
+ * en fonction de son identifiant et de son mot de passe
+ * 
+ * @author seb
+ *
+ */
 public class Authentification {
 
 	private boolean isValide;
@@ -36,7 +42,19 @@ public class Authentification {
 		return isOk;
 	}
 
-	
-	
-	
+	public String getIdentifiant() {
+		return identifiant;
+	}
+
+	public void setIdentifiant(String identifiant) {
+		this.identifiant = identifiant;
+	}
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
 }

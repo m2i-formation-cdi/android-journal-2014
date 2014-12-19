@@ -4,6 +4,7 @@ int anim abc_slide_in_bottom 0x7f040002
 int anim abc_slide_in_top 0x7f040003
 int anim abc_slide_out_bottom 0x7f040004
 int anim abc_slide_out_top 0x7f040005
+int array menu_principal 0x7f0c0000
 int attr actionBarDivider 0x7f010015
 int attr actionBarItemBackground 0x7f010016
 int attr actionBarPopupTheme 0x7f01000f
@@ -432,7 +433,8 @@ int layout abc_search_dropdown_item_icons_2line 0x7f030014
 int layout abc_search_view 0x7f030015
 int layout abc_simple_dropdown_hint 0x7f030016
 int layout login 0x7f030017
-int layout support_simple_spinner_dropdown_item 0x7f030018
+int layout menu_principal 0x7f030018
+int layout support_simple_spinner_dropdown_item 0x7f030019
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_home_description_format 0x7f0a0005
 int string abc_action_bar_home_subtitle_description_format 0x7f0a0006
@@ -454,10 +456,12 @@ int string authentification_echec 0x7f0a001b
 int string bt_annuler 0x7f0a0012
 int string bt_ok 0x7f0a0011
 int string bt_valider 0x7f0a0013
+int string hello_world 0x7f0a001d
 int string login_accueil_message 0x7f0a0015
 int string login_label_identifiant 0x7f0a0016
 int string login_label_mot_de_passe 0x7f0a0017
 int string login_titre_fenetre 0x7f0a0014
+int string title_activity_menu_principal 0x7f0a001c
 int string validation_erreur 0x7f0a0018
 int string validation_login_absent 0x7f0a0019
 int string validation_mdp_absent 0x7f0a001a

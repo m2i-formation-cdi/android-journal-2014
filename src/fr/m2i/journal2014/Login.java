@@ -2,6 +2,7 @@ package fr.m2i.journal2014;
 
 import fr.m2i.journal2014.models.Authentification;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ public class Login extends Activity implements
 	private TextView textViewErreur;
 	private Button btOk;
 	private Button btAnnuler;
+	
+	private Intent intentionMenuPrincipal;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +106,8 @@ public class Login extends Activity implements
 		
 		//Test de l'authetification
 		if(auth.valider()){
-			
+			intentionMenuPrincipal = new Intent(this, MenuPrincipal.class);
+			startActivity(intentionMenuPrincipal);
 		}else {
 			textViewErreur.setText(getString(R.string.authentification_echec));
 		}
