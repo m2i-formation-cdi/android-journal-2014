@@ -1,5 +1,6 @@
 package fr.m2i.journal2014;
 
+import fr.m2i.journal2014.models.Authentification;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,14 +29,14 @@ public class Login extends Activity implements
 		editTextMotDePasse = (EditText) findViewById(R.id.editTextMotDePasse);
 		textViewErreur = (TextView) findViewById(R.id.textViewLoginErreur);
 
-		//Gestion des événements
+		//Déclaration des écouteurs d'évènements
 		btOk.setOnClickListener(this);
 		btAnnuler.setOnClickListener(this);
 
 	}
 
 	/**
-	 * Validation de la validité de la saisie de l'identifiant et du mot de
+	 * Contrôle de la validité de la saisie de l'identifiant et du mot de
 	 * passe
 	 * 
 	 * @return boolean
@@ -68,14 +69,44 @@ public class Login extends Activity implements
 		return saisieOk;
 	}
 
+	/**
+	 * Gestionnaire du clic sur les boutons Valider et Annuler
+	 */
 	@Override
 	public void onClick(View v) {
 		if(v== btOk){
-			
+			if(validerSaisie()){
+				authentifier();
+			}
 		} else if(v== btAnnuler){
-			
+			razFormulaire();
 		}
-	
+	}
+	/**
+	 * Effacement de toutes les saisies et de tous les messages
+	 */
+	private void razFormulaire(){
+		editTextIdentifiant.setText("");
+		editTextMotDePasse.setText("");
+		textViewErreur.setText("");
+	}
+	/**
+	 * Authentification de l'utilisateur
+	 */
+	private void authentifier(){
+		//Récupération de la saisie de l'identifiant et du mot de passe
+		String identifiant = editTextIdentifiant.getText().toString();
+		String motDePasse = editTextMotDePasse.getText().toString();
+		
+		//Instanciation de la classe authentification
+		Authentification auth = new Authentification(identifiant, motDePasse);
+		
+		//Test de l'authetification
+		if(auth.valider()){
+			
+		}else {
+			textViewErreur.setText(getString(R.string.authentification_echec));
+		}
 		
 	}
 }

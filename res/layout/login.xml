@@ -39,10 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="70"
-            android:ems="10"
-            android:inputType="text" > 
-
-            <requestFocus />
+            android:ems="10" >
         </EditText>
 
     </LinearLayout>
@@ -59,12 +56,12 @@
             android:text="@string/login_label_mot_de_passe" />
 
        <EditText
-            android:id="@+id/editTextMotDePasse"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="70"
-            android:ems="10"
-            android:inputType="text" >
+           android:id="@+id/editTextMotDePasse"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="70"
+           android:ems="10"
+           android:inputType="textPassword" >
 
         </EditText>
 
@@ -81,7 +78,7 @@
             android:id="@+id/buttonOK"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="40"
+            android:layout_weight="50"
             android:minHeight="40dip"
             android:minWidth="40dip"
             android:text="@string/bt_ok" />
@@ -89,7 +86,7 @@
         <Button
             android:id="@+id/buttonAnnuler"
             android:layout_width="0dp"
-            android:layout_weight="40"
+            android:layout_weight="50"
             android:layout_height="wrap_content"
             android:minHeight="40dip"
             android:minWidth="40dip"

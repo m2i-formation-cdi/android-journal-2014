@@ -17,5 +17,6 @@
     <string name="validation_erreur">Vous devez corriger les erreurs suivantes</string>
     <string name="validation_login_absent">Vous devez saisir un identifiant</string>
     <string name="validation_mdp_absent">Vous devez saisir un mot de passe</string>
+    <string name="authentification_echec">Votre couple identifiant/mot de passe est incorrect</string>
     
 </resources>

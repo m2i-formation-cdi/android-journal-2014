@@ -450,6 +450,7 @@ int string abc_shareactionprovider_share_with 0x7f0a000f
 int string abc_shareactionprovider_share_with_application 0x7f0a000e
 int string abc_toolbar_collapse_description 0x7f0a0004
 int string app_name 0x7f0a0010
+int string authentification_echec 0x7f0a001b
 int string bt_annuler 0x7f0a0012
 int string bt_ok 0x7f0a0011
 int string bt_valider 0x7f0a0013
