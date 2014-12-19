@@ -1,5 +1,6 @@
-package fr.m2i.appjournal2014;
+package fr.m2i.journal2014;
 
+import fr.m2i.journal2014.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;

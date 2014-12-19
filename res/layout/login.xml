@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="70"
             android:ems="10"
-            android:inputType="text" >
+            android:inputType="text" > 
 
             <requestFocus />
         </EditText>
