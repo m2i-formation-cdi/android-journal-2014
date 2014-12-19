@@ -42,19 +42,22 @@ public class Login extends Activity implements
 	 */
 	private boolean validerSaisie() {
 		// Instanciation et initialisation d'un StringBuilder pour le message
-		// d'erreur
+		// d'erreur, le message est récupéré de string.xml
 		StringBuilder sbErreur = new StringBuilder(
-				"Veuillez corriger les erreurs suivantes");
+				getString(R.string.validation_erreur));
 		boolean saisieOk = true;
 
 		// Contrôle de l'identifiant
 		if (editTextIdentifiant.equals("")) {
-			sbErreur.append("\nVous devez saisir un identifiant");
+			sbErreur.append("\n");
+			//récupération du message d'erreur depuis string.xml
+			sbErreur.append(getString(R.string.validation_login_absent));
 			saisieOk = false;
 		}
 		// Contrôle du mot de passe
 		if (editTextMotDePasse.equals("")) {
-			sbErreur.append("\nVous devez saisir un mot de passe");
+			sbErreur.append("\n");
+			sbErreur.append(getString(R.string.validation_mdp_absent));
 			saisieOk = false;
 		}
 		// Affichage du message d'erreur

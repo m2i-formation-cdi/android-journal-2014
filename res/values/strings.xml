@@ -13,4 +13,9 @@
     <string name="login_accueil_message">Veuillez vous identifier</string>
     <string name="login_label_identifiant">Identifiant</string>
     <string name="login_label_mot_de_passe">Mot de passe</string>
+    
+    <string name="validation_erreur">Vous devez corriger les erreurs suivantes</string>
+    <string name="validation_login_absent">Vous devez saisir un identifiant</string>
+    <string name="validation_mdp_absent">Vous devez saisir un mot de passe</string>
+    
 </resources>
