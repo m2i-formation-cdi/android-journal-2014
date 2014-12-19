@@ -25,6 +25,10 @@
             android:name=".MenuPrincipal"
             android:label="@string/title_activity_menu_principal" >
         </activity>
+        <activity
+            android:name=".Journalistes"
+            android:label="@string/title_activity_journaliste" >
+        </activity>
     </application>
 
 </manifest>

@@ -7,6 +7,10 @@
     <string name="bt_ok">OK</string>
     <string name="bt_annuler">ANNULER</string>
     <string name="bt_valider">VALIDER</string>
+    <string name="bt_ajouter">AJOUTER</string>
+    <string name="bt_modifier">MODIFIER</string>
+    <string name="bt_supprimer">SUPPRIMER</string>
+    <string name="hello_world">Hello world!</string>
 
     <!-- LOGIN ACTIVITY -->
     <string name="login_titre_fenetre">Login</string>
@@ -17,7 +21,14 @@
     <string name="validation_login_absent">Vous devez saisir un identifiant</string>
     <string name="validation_mdp_absent">Vous devez saisir un mot de passe</string>
     <string name="authentification_echec">Votre couple identifiant/mot de passe est incorrect</string>
+    
+    <!-- MENU PRINCIPAL -->
     <string name="title_activity_menu_principal">Menu Principal</string>
-    <string name="hello_world">Hello world!</string>
+    
+    <!-- JOURNALISTES -->
+    <string name="title_activity_journaliste">Journalistes</string>
+    <string name="label_nom">Nom</string>
+    <string name="label_statut">Statut</string>
+    <string name="label_id">ID</string>
 
 </resources>

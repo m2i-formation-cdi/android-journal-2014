@@ -31,6 +31,10 @@ public class Login extends Activity implements
 		editTextIdentifiant = (EditText) findViewById(R.id.editTextIdentifiant);
 		editTextMotDePasse = (EditText) findViewById(R.id.editTextMotDePasse);
 		textViewErreur = (TextView) findViewById(R.id.textViewLoginErreur);
+		
+		//Initialisation du login pour test
+		editTextIdentifiant.setText("toto");
+		editTextMotDePasse.setText("pass");
 
 		//Déclaration des écouteurs d'évènements
 		btOk.setOnClickListener(this);
