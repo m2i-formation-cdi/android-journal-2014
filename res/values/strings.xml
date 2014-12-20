@@ -21,14 +21,23 @@
     <string name="validation_login_absent">Vous devez saisir un identifiant</string>
     <string name="validation_mdp_absent">Vous devez saisir un mot de passe</string>
     <string name="authentification_echec">Votre couple identifiant/mot de passe est incorrect</string>
-    
+
     <!-- MENU PRINCIPAL -->
     <string name="title_activity_menu_principal">Menu Principal</string>
-    
+
     <!-- JOURNALISTES -->
     <string name="title_activity_journaliste">Journalistes</string>
     <string name="label_nom">Nom</string>
+    <string name="label_prenom">Prénom</string>
+    <string name="label_pseudo">Pseudo</string>
+    <string name="label_mdp">Mot de passe</string>
+    <string name="label_email">e-mail</string>
+    <string name="label_civilite">Civilité</string>
+    <string name="label_date_inscription">Date inscription</string>
+    <string name="label_photo">Photo</string>
+    <string name="label_offre_partenaire">Offre partenaire</string>
     <string name="label_statut">Statut</string>
     <string name="label_id">ID</string>
+    <string name="title_activity_journaliste_form">Journaliste</string>
 
 </resources>

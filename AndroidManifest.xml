@@ -29,6 +29,10 @@
             android:name=".Journalistes"
             android:label="@string/title_activity_journaliste" >
         </activity>
+        <activity
+            android:name=".JournalisteForm"
+            android:label="@string/title_activity_journaliste_form" >
+        </activity>
     </application>
 
 </manifest>
