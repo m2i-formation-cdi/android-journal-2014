@@ -39,5 +39,8 @@
     <string name="label_statut">Statut</string>
     <string name="label_id">ID</string>
     <string name="title_activity_journaliste_form">Journaliste</string>
+    <string name="label_monsieur">Monsieur</string>
+    <string name="label_madame">Madame</string>
+    
 
 </resources>

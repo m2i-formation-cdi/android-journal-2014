@@ -7,28 +7,49 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-public class Journalistes extends ListActivity {
+public class Journalistes extends ListActivity implements OnClickListener {
 
 	private List<Map<String, String>> listJournalistes;
 	private ListView listeViewJournalistes;
+	private Button btAjout;
+	private Button btModif;
+	private Button btSuppression;
+	
+	private Intent intentionFormulaire;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.RemplirListView();
 		setContentView(R.layout.journalistes);
-
-		//listeViewJournalistes = (ListView) findViewById(R.id.listViewJournalistes);
-		RemplirListView();
+		
+		//Récupération des références des éléments d'interface
+		btAjout = (Button) findViewById(R.id.buttonAjoutJournaliste);
+		btModif = (Button) findViewById(R.id.buttonModifJournaliste);
+		btSuppression = (Button) findViewById(R.id.buttonSupprJournaliste);
+		
+		//écouteurs des gestionnaires d'événements
+		btAjout.setOnClickListener(this);
+		btModif.setOnClickListener(this);
+		btSuppression.setOnClickListener(this);
+		
+		//Définition des intentions
+		intentionFormulaire = new Intent(this.getBaseContext(),JournalisteForm.class);
+		
+		//Remplissage de la liste des journalistes
+		this.RemplirListView();
 		
 	}
 
@@ -99,6 +120,18 @@ public class Journalistes extends ListActivity {
 	}
 	
 	public void onListItemClick(ListView parent, View v, int position, long id) {
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		if(v==btAjout){
+			startActivityForResult(intentionFormulaire, 1);
+		}
+		
+		if(v==btModif){
+			
+		}
 		
 	}
 }

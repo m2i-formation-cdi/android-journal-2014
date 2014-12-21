@@ -13,171 +13,185 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_civilite" />
 
-        <Spinner
-            android:id="@+id/Spinner1"
+        <RadioGroup
+            android:id="@+id/radioGroup1"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
-            >
-        </Spinner>
+            android:layout_weight="70"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radioMadame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/label_madame" />
+
+            <RadioButton
+                android:id="@+id/radioMonsieur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_monsieur" />
+        </RadioGroup>
+
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_prenom" />
 
         <EditText
             android:id="@+id/editTextJournalistePrenom"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:ems="10" >
         </EditText>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_nom" />
 
         <EditText
             android:id="@+id/editTextJournalisteNom"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:ems="10" >
         </EditText>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_email" />
 
         <EditText
             android:id="@+id/editTextJournalisteEmail"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:ems="10" >
         </EditText>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_pseudo" />
 
         <EditText
             android:id="@+id/editTextJournalistePseudo"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:ems="10" >
         </EditText>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_mdp" />
 
         <EditText
             android:id="@+id/editTextJournalisteMotDePasse"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:ems="10" >
         </EditText>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
-            android:text="@string/label_date_inscription" />
+            android:layout_weight="30"
+            android:text="@string/label_date_inscription"
+            android:textSize="12dp" />
 
         <EditText
-            android:id="@+id/editTextJournalisteDateInscription"
+            android:id="@+id/EditTextJournalisteDateInscription"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
-            android:ems="10" >
+            android:layout_weight="70"
+            android:inputType="date" >
         </EditText>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="" />
 
-        <CheckBox android:text="@string/label_offre_partenaire"
+        <CheckBox
             android:id="@+id/CheckJournalisteOffre"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
-            android:ems="10" >
+            android:layout_weight="70"
+            android:ems="10"
+            android:text="@string/label_offre_partenaire" >
         </CheckBox>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="30"
             android:text="@string/label_photo" />
 
         <EditText
             android:id="@+id/editTextJournalistePhoto"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
+            android:layout_weight="70"
             android:ems="10" >
         </EditText>
     </LinearLayout>
-    
-    
 
 </LinearLayout>
