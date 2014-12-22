@@ -19,6 +19,9 @@ public class MenuPrincipal extends ListActivity {
 	@Override
 	public void onListItemClick(ListView parent, View v, int position, long id) {
 	    switch(position){
+	    case 0:
+	    	intentionNavigation = new Intent(this,Statut.class);
+	    	break;		
 	    case 5:
 	    	intentionNavigation = new Intent(this,Journalistes.class);
 	    	break;

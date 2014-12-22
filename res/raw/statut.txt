@@ -1,0 +1,6 @@
+1;Rédacteur en chef;RC
+2;Journaliste;JO
+3;Abonné;AB
+9;Formateur;FO
+16;Stagiaire;ST
+24;Non défini;NDF

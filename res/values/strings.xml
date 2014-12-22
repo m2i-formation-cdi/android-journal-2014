@@ -41,6 +41,6 @@
     <string name="title_activity_journaliste_form">Journaliste</string>
     <string name="label_monsieur">Monsieur</string>
     <string name="label_madame">Madame</string>
-    
+    <string name="title_activity_statut">Statuts</string>
 
 </resources>
