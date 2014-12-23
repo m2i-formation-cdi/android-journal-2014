@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,6 +20,13 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener {
 
 	private EditText editDateInscription;
 	private Spinner spinnerCivilite;
+	private boolean isNew;
+	
+	private Button btValid;
+	private Button btDelete;
+	private Button btCancel;
+	
+	private String pk;
 
 	private DatePickerDialog.OnDateSetListener datePickerDialogListener;
 
@@ -28,6 +36,18 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener {
 		setContentView(R.layout.journaliste_form);
 
 		editDateInscription = (EditText) findViewById(R.id.EditTextJournalisteDateInscription);
+		btValid = (Button) findViewById(R.id.buttonJrFormValid);
+		btCancel = (Button) findViewById(R.id.buttonJrFormCancel);
+		btDelete = (Button) findViewById(R.id.buttonJrFormDelete);
+		
+		//Récupération des paramètres
+		Bundle params = this.getIntent().getExtras();
+		pk = params.getString("pk");
+		isNew = pk.equals("");
+		
+		if(isNew){
+			btDelete.setVisibility(View.INVISIBLE);
+		}
 		
 
 		// -------------------------------------------------------------------------------

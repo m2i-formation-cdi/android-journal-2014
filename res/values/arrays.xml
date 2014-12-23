@@ -2,6 +2,7 @@
 <resources>
     <string-array name="menu_principal">
         <item >Statuts</item>
+        <item>Catégories</item>
         <item>Civilités</item>
         <item >Rubriques</item>
         <item>Mots clé</item>

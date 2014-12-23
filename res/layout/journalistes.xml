@@ -18,18 +18,6 @@
             android:layout_height="wrap_content"
             android:text="@string/bt_ajouter" />
 
-        <Button
-            android:id="@+id/buttonModifJournaliste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_modifier" />
-
-        <Button
-            android:id="@+id/buttonSupprJournaliste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_supprimer" />
-
     </LinearLayout>
 
     <ListView

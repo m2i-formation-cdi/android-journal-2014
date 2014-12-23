@@ -24,8 +24,6 @@ public class Journalistes extends ListActivity implements OnClickListener {
 	private List<Map<String, String>> listJournalistes;
 	private ListView listeViewJournalistes;
 	private Button btAjout;
-	private Button btModif;
-	private Button btSuppression;
 	
 	private Intent intentionFormulaire;
 	
@@ -37,13 +35,9 @@ public class Journalistes extends ListActivity implements OnClickListener {
 		
 		//Récupération des références des éléments d'interface
 		btAjout = (Button) findViewById(R.id.buttonAjoutJournaliste);
-		btModif = (Button) findViewById(R.id.buttonModifJournaliste);
-		btSuppression = (Button) findViewById(R.id.buttonSupprJournaliste);
 		
 		//écouteurs des gestionnaires d'événements
 		btAjout.setOnClickListener(this);
-		btModif.setOnClickListener(this);
-		btSuppression.setOnClickListener(this);
 		
 		//Définition des intentions
 		intentionFormulaire = new Intent(this.getBaseContext(),JournalisteForm.class);
@@ -120,18 +114,16 @@ public class Journalistes extends ListActivity implements OnClickListener {
 	}
 	
 	public void onListItemClick(ListView parent, View v, int position, long id) {
-		
+		String pk = listJournalistes.get(position).get("id");
+		intentionFormulaire.putExtra("pk", pk);
+		startActivityForResult(intentionFormulaire, 2);
 	}
 
 	@Override
 	public void onClick(View v) {
 		if(v==btAjout){
+			intentionFormulaire.putExtra("pk", "");
 			startActivityForResult(intentionFormulaire, 1);
 		}
-		
-		if(v==btModif){
-			
-		}
-		
 	}
 }

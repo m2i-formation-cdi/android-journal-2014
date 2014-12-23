@@ -11,9 +11,31 @@
     <string name="bt_modifier">MODIFIER</string>
     <string name="bt_supprimer">SUPPRIMER</string>
     <string name="hello_world">Hello world!</string>
+    <string name="cls">CLS</string>
+    <string name="plus">+</string>
+    <string name="moins">-</string>
+    <string name="modifier">v</string>
+    <string name="premier">&#60;&#60;</string>
+    <string name="precedent">&#60;</string>
+    <string name="suivant">&#62;</string>
+    <string name="dernier">&#62;&#62;</string>
+
+    <!-- RUBRIQUES -->
+    <string name="action_settings">Settings</string>
+    <string name="email">E-mail : </string>
+    <string name="mdp">MDP : </string>
+    <string name="valider">Valider</string>
+    <string name="annuler">Annuler</string>
+    <string name="id_rubrique">ID Rubrique : </string>
+    <string name="rubrique">Rubrique : </string>
+    <string name="id_mot_cle">ID Mot-Clé : </string>
+    <string name="mot_cle">Mot-Clé : </string>
+    <string name="id_etat_article">ID état article : </string>
+    <string name="etat_article">Etat article : </string>
+    <string name="message">Message</string>
+    <string name="selectionner">Sélectionnez</string>
 
     <!-- LOGIN ACTIVITY -->
-    <string name="login_titre_fenetre">Login</string>
     <string name="login_accueil_message">Veuillez vous identifier</string>
     <string name="login_label_identifiant">Identifiant</string>
     <string name="login_label_mot_de_passe">Mot de passe</string>
@@ -24,9 +46,25 @@
 
     <!-- MENU PRINCIPAL -->
     <string name="title_activity_menu_principal">Menu Principal</string>
+    <string name="title_activity_journaliste">Journalistes</string>
+    <string name="title_activity_journaliste_form">Journaliste</string>
+    <string name="login_titre_fenetre">Login</string>
+    <string name="title_activity_sommaire">Sommaire</string>
+    <string name="title_activity_statut">Statuts</string>
+    <string name="title_activity_categorie">Catégories</string>
+    <string name="title_activity_civilite">Civilités</string>
+    <string name="title_activity_rubrique">CRUD Rubriques</string>
+    <string name="title_activity_mot_cle">CRUD Mots-Clés</string>
+    <string name="title_activity_etat_article">CRUD Etats articles</string>
+    <string name="title_activity_contributeur">CRUD Contributeur</string>
+    <string name="title_activity_article_ajout">Article+</string>
+    <string name="title_activity_article_suppression">Article-</string>
+    <string name="title_activity_article_validation">Validation</string>
+    <string name="title_activity_article_modification">Modification</string>
+    <string name="title_activity_article_archivage">Archivage</string>
 
     <!-- JOURNALISTES -->
-    <string name="title_activity_journaliste">Journalistes</string>
+
     <string name="label_nom">Nom</string>
     <string name="label_prenom">Prénom</string>
     <string name="label_pseudo">Pseudo</string>
@@ -38,9 +76,7 @@
     <string name="label_offre_partenaire">Offre partenaire</string>
     <string name="label_statut">Statut</string>
     <string name="label_id">ID</string>
-    <string name="title_activity_journaliste_form">Journaliste</string>
     <string name="label_monsieur">Monsieur</string>
     <string name="label_madame">Madame</string>
-    <string name="title_activity_statut">Statuts</string>
 
 </resources>

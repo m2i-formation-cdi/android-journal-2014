@@ -21,8 +21,14 @@ public class MenuPrincipal extends ListActivity {
 	    switch(position){
 	    case 0:
 	    	intentionNavigation = new Intent(this,Statut.class);
-	    	break;		
-	    case 5:
+	    	break;	
+	    case 1:
+	    	intentionNavigation = new Intent(this,Categorie.class);
+	    	break;
+	    case 3:
+	    	intentionNavigation = new Intent(this,Rubrique.class);
+	    	break;
+	    case 6:
 	    	intentionNavigation = new Intent(this,Journalistes.class);
 	    	break;
 	    }
