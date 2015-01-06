@@ -45,6 +45,14 @@
             android:name=".Rubrique"
             android:label="@string/title_activity_rubrique" >
         </activity>
+        <activity
+            android:name=".MotCle"
+            android:label="@string/title_activity_mot_cle" >
+        </activity>
+        <activity
+            android:name=".TestDAO"
+            android:label="@string/title_activity_test_dao" >
+        </activity>
     </application>
 
 </manifest>

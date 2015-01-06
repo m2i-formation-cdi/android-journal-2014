@@ -14,9 +14,9 @@
         
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="15"
+            android:layout_weight="25"
             android:layout_height="wrap_content"
-            android:text="@string/label_id" />
+            android:text="@string/label_journaliste_id" />
 
         <TextView
             android:id="@+id/lstJournalisteId"
@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_weight="25"
             android:layout_height="wrap_content"
-            android:text="@string/label_statut" />
+            android:text="@string/label_journaliste_statut" />
 
         <TextView
             android:id="@+id/lstJournalisteStatut"

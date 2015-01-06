@@ -28,10 +28,24 @@ public class MenuPrincipal extends ListActivity {
 	    case 3:
 	    	intentionNavigation = new Intent(this,Rubrique.class);
 	    	break;
+	    case 4:
+	    	intentionNavigation = new Intent(this,MotCle.class);
+	    	break;
+	    case 5:
+	    	break;
 	    case 6:
 	    	intentionNavigation = new Intent(this,Journalistes.class);
 	    	break;
+	    case 7:
+	    	break;
+	    case 8:
+	    	intentionNavigation = new Intent(this,TestDAO.class);
+	    	break;
+	    case 9:
+	    	break;
+	    
 	    }
+	    
 	    
 	    startActivity(intentionNavigation);
 	} 

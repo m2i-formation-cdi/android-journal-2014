@@ -1,31 +1,53 @@
 package fr.m2i.journal2014;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
+import fr.m2i.journal2014.models.DAOFichier;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.provider.MediaStore.Audio.Radio;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
-public class JournalisteForm extends Activity implements OnFocusChangeListener {
+public class JournalisteForm extends Activity implements OnFocusChangeListener, OnClickListener {
 
 	private EditText editDateInscription;
-	private Spinner spinnerCivilite;
+	private RadioButton radioMadame;
+	private RadioButton radioMonsieur;
+	private Spinner spinnerStatut;
+	private EditText editTextPrenom;
+	private EditText editTextNom;
+	private EditText editTextEmail;
+	private EditText editTextEmailConfirm;
+	private EditText editTextPseudo;
+	private EditText editTextMotDePasse;
+	private EditText editTextMotDePasseConfirm;
+	private EditText editTextPhoto;
+	private CheckBox checkBoxOffrePartenaire;
+
 	private boolean isNew;
-	
+
 	private Button btValid;
 	private Button btDelete;
 	private Button btCancel;
-	
+
 	private String pk;
 
 	private DatePickerDialog.OnDateSetListener datePickerDialogListener;
@@ -35,25 +57,52 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.journaliste_form);
 
-		editDateInscription = (EditText) findViewById(R.id.EditTextJournalisteDateInscription);
-		btValid = (Button) findViewById(R.id.buttonJrFormValid);
-		btCancel = (Button) findViewById(R.id.buttonJrFormCancel);
-		btDelete = (Button) findViewById(R.id.buttonJrFormDelete);
+		initComponents();
 		
-		//Récupération des paramètres
+		initEventListener();
+		
+		populateStatut();
+
+		// Récupération des paramètres
 		Bundle params = this.getIntent().getExtras();
 		pk = params.getString("pk");
 		isNew = pk.equals("");
-		
-		if(isNew){
+
+		if (isNew) {
 			btDelete.setVisibility(View.INVISIBLE);
 		}
-		
+	}
 
-		// -------------------------------------------------------------------------------
+	private void initComponents() {
+
+		btValid = (Button) findViewById(R.id.buttonJrFormValid);
+		btCancel = (Button) findViewById(R.id.buttonJrFormCancel);
+		btDelete = (Button) findViewById(R.id.buttonJrFormDelete);
+
+		radioMadame = (RadioButton) findViewById(R.id.radioJournalisteMadame);
+		radioMonsieur = (RadioButton) findViewById(R.id.radioJournalisteMonsieur);
+		spinnerStatut = (Spinner) findViewById(R.id.spinnerJournalisteStatut);
+		editTextPrenom = (EditText) findViewById(R.id.editTextJournalistePrenom);
+		editTextNom = (EditText) findViewById(R.id.editTextJournalisteNom);
+		editTextEmail = (EditText) findViewById(R.id.editTextJournalisteEmail);
+		editTextEmailConfirm = (EditText) findViewById(R.id.editTextJournalisteEmailConfirm);
+		editTextPseudo = (EditText) findViewById(R.id.editTextJournalistePseudo);
+		editTextMotDePasse = (EditText) findViewById(R.id.editTextJournalisteMotDePasse);
+		editTextMotDePasseConfirm = (EditText) findViewById(R.id.editTextJournalisteMotDePasseConfirm);
+		editTextPhoto = (EditText) findViewById(R.id.editTextJournalistePhoto);
+		checkBoxOffrePartenaire = (CheckBox) findViewById(R.id.CheckJournalisteOffre);
+		editDateInscription = (EditText) findViewById(R.id.EditTextJournalisteDateInscription);
+
+	}
+
+	private void initEventListener() {
 		// Écouteurs et gestion d'événements
+		
+		btCancel.setOnClickListener(this);
+		btDelete.setOnClickListener(this);
+		btValid.setOnClickListener(this);
 
-		//Gestion du contrôle datePicker
+		// Gestion du contrôle datePicker
 		datePickerDialogListener = new DatePickerDialog.OnDateSetListener() {
 			public void onDateSet(DatePicker dp, int annee, int mois, int jour) {
 				// On affecte à dh les valeurs sélectionnées par l'UT
@@ -76,11 +125,28 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener {
 		}; // / DatePickerDialog.OnDateSetListener
 	}
 	
-	
+	private void populateStatut(){
+		try {
+			DAOFichier dao = new DAOFichier(getBaseContext(), R.raw.statut);
+			dao.setfirstLineContainsLabel(false);
+			dao.loadData();
+			
+			String statut[] = dao.getColumnAsArray("col2");
+			ArrayAdapter<String> aa;
+			aa = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,statut);
+			aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spinnerStatut.setAdapter(aa);
+			
+		} catch (IOException e) {
+			Log.e("Erreur Spinner Statut", e.getMessage());
+		} catch (Exception e) {
+			Log.e("Erreur Spinner Statut", e.getMessage());
+		}
+	}
 
 	@Override
 	public void onFocusChange(View v, boolean hasFocus) {
-		
+
 		if (v == editDateInscription && hasFocus) {
 			// Recuperation de la date actuelle
 			Calendar dh = Calendar.getInstance();
@@ -90,5 +156,24 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener {
 			dpd.show();
 		}
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		
+		if(v==btCancel){
+			
+		}
+		
+		if(v== btValid){
+			
+		}
+		
+		if(v==btDelete){
+			
+		}
+		
+		finish();
+		
 	}
 }

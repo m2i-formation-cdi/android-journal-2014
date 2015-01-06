@@ -9,5 +9,7 @@
         <item>Images</item>
         <item >Journalistes</item>
         <item>Articles</item>
+        <item>Test DAO</item>
+        <item>Villes SQLite</item>
     </string-array> 
 </resources>
