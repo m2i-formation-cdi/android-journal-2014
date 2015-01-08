@@ -126,6 +126,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		}; // / DatePickerDialog.OnDateSetListener
 		
 		editDateInscription.setOnFocusChangeListener(this);
+		
 	}
 	
 	private void populateStatut(){
