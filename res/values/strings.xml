@@ -83,5 +83,22 @@
     <string name="label_monsieur">Monsieur</string>
     <string name="label_madame">Madame</string>
     <string name="title_activity_test_dao">TestDAO</string>
+            
+          <!-- ARTICLE PLUS -->
+    
+     <string name="textViewTitre">Titre</string>
+     <string name="editTextTitre"></string>
+     <string name="textViewChapeau">Chapeau</string>
+     <string name="textViewResume">Resume</string>
+     <string name="textViewTexte">Texte</string>
+     <string name="textViewContributeur">Contributeur</string>
+     <string name="buttonCls">Cls</string>
+     <string name="buttonAjouter">Ajouter</string>
+     <string name="title_article_plus">Article Plus</string>
+     
+    
+    
+    
+    
  
 </resources>
