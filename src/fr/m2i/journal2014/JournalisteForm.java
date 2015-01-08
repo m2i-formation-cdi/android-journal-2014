@@ -11,7 +11,6 @@ import fr.m2i.journal2014.models.DAOFichier;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.provider.MediaStore.Audio.Radio;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
