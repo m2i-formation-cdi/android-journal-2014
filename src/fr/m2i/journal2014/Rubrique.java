@@ -251,10 +251,8 @@ public class Rubrique extends Activity implements OnClickListener {
 			is.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -286,10 +284,8 @@ public class Rubrique extends Activity implements OnClickListener {
 			osw.close();
 			os.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}///saveToCSV

@@ -6,7 +6,9 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -52,6 +54,10 @@
         <activity
             android:name=".TestDAO"
             android:label="@string/title_activity_test_dao" >
+        </activity>
+        <activity
+            android:name=".ArticlePlus"
+            android:label="@string/title_article_plus" >
         </activity>
     </application>
 

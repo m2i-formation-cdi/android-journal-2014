@@ -55,6 +55,10 @@
             android:name=".TestDAO"
             android:label="@string/title_activity_test_dao" >
         </activity>
+        <activity
+            android:name=".ArticlePlus"
+            android:label="@string/title_article_plus" >
+        </activity>
     </application>
 
 </manifest>

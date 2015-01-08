@@ -91,6 +91,8 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		editTextPhoto = (EditText) findViewById(R.id.editTextJournalistePhoto);
 		checkBoxOffrePartenaire = (CheckBox) findViewById(R.id.CheckJournalisteOffre);
 		editDateInscription = (EditText) findViewById(R.id.EditTextJournalisteDateInscription);
+		
+		
 
 	}
 
@@ -122,6 +124,8 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 				editDateInscription.setText(lsDate);
 			}
 		}; // / DatePickerDialog.OnDateSetListener
+		
+		editDateInscription.setOnFocusChangeListener(this);
 	}
 	
 	private void populateStatut(){
