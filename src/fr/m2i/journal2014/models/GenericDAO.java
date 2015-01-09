@@ -146,7 +146,7 @@ public class GenericDAO implements IDAO<Object>{
         
         //Map des valeurs de retour pour obtenir des entiers
         //car java 1.6 ne supporte pas le type String avec les switch
-        Map mapReturnType = new HashMap<String, Integer>();
+        Map<String, Integer> mapReturnType = new HashMap<String, Integer>();
         mapReturnType.put("int", 1);
         mapReturnType.put("class java.util.Calendar", 2);
            
