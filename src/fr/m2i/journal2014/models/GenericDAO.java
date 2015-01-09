@@ -144,21 +144,16 @@ public class GenericDAO implements IDAO<Object>{
         //Récupération du type retournée par la méthode sous la forme d'une chaîne
         returnType = getterMethod.getReturnType().toString();
         
-        
+        //Map des valeurs de retour pour obtenir des entiers
+        //car java 1.6 ne supporte pas le type String avec les switch
         Map mapReturnType = new HashMap<String, Integer>();
         mapReturnType.put("int", 1);
         mapReturnType.put("class java.util.Calendar", 2);
-        
-        /*
-        String[] tReturnType = new String[2];
-        tReturnType[0] = "int";
-        tReturnType[1] = "class java.util.Calendar";
-        */
-        
-        
+           
+        //Conversion du type de retour en valeur entière
         int intReturnType = Integer.valueOf(mapReturnType.get(returnType).toString());
 
-        //En fonction du type on définit les règles de conersion en String
+        //En fonction du type on définit les règles de conversion en String
         switch (intReturnType) {
             case 1:
                 Object getterValue =  getterMethod.invoke(pojo);
