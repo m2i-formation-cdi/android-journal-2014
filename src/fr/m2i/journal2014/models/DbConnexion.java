@@ -17,5 +17,4 @@ public class DbConnexion {
 		cn = DriverManager.getConnection(dbHost, dbUser, dbPass);
 		return cn;
 	}
-
 }
