@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DbConnexion {
 
-	private static String dbHost = "jdbc:mysql://172.26.10.32:3306/journal2014";
+	private static String dbHost = "jdbc:mysql://172.26.10.54:3306/journal2014";
 	private static String dbUser = "p";
 	private static String dbPass = "b";
 
