@@ -19,26 +19,22 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import fr.m2i.journal2014.models.DbConnexion;
 
-public class ArticleListe extends ListActivity implements OnClickListener, OnItemSelectedListener {
+public class ArticleListe extends ListActivity implements OnItemSelectedListener {
 	// Liste deroulante de choix
 	private Spinner spinnerListeSelection;
-	// Bouton de retour
-	private Button buttonRetourArticleListe;
 	// Texte de message
 	private TextView textViewMessageArticleList;
 	// Source du Spinner
-	List<String> listFichier;
+//	List<String> listFichier;
 	// Selection des articles transmise par l'activite appelante
 	private String selection = "";
 	// Declaration d'un arrayAdapter pour la liste deroulante
@@ -46,7 +42,7 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 	// Mot selectionne pour filtrer les article
 	private String monFiltre;
 	// Liste des articles selectionnes
-//	List<Map<String, String>> listeArticle = null;
+//	private List<HashMap<String, String>> listeArticle = null;
 	// Definition d'un contexte
 	private Context contexte; 
 	
@@ -59,59 +55,37 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.article_liste);
 		
-//		selection = "Rubriques";
-		selection = this.getIntent().getStringExtra("cle");
-		Log.i(TAG_APPLI, selection);
-		
+		initInterface();
+				
 		// Alimentation du Spinner
 		alimenterSourceSpinner();
 		
-		initInterface();
-		
-		
+//		
 		
 	}
 
 	private void initInterface() {
 
 		// Recuperation du type de selection des articles transmis par l'activite appelante
-//		selection = this.getIntent().getStringExtra("cle");
-//		selection = "Rubriques";
+		selection = this.getIntent().getStringExtra("cle");
 
 		// Liaison avec la zone de message
 		textViewMessageArticleList = (TextView) findViewById(R.id.textViewMessageArticleList);
 		// Information sur le type de selection des articles
 		textViewMessageArticleList.setText("Article par " + selection);
-		
-		// Liaison avec le bouton de retour
-		buttonRetourArticleListe = (Button) findViewById(R.id.buttonRetourArticleListe);
-		// Rattachement du bouton au listener
-		buttonRetourArticleListe.setOnClickListener(this);
-		
+				
 		// Liaison avec la liste deroulante
 		spinnerListeSelection = (Spinner) findViewById(R.id.spinnerListeSelection);
 		// Rattachement au listener
 		spinnerListeSelection.setOnItemSelectedListener(this);
-		// Definition de l'array adapter
-		 aa  = new ArrayAdapter(this,
-				  android.R.layout.simple_spinner_item
-				  , listFichier);
-				
-		aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Affectation de la source du spinner
-		spinnerListeSelection.setAdapter(aa);
+
 
 		// Instanciation du contexte
 		contexte = this.getBaseContext();
 		
 	}
 
-	@Override
-	public void onClick(View vue) {		
-		
-	}
 	
-
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View vue, int position, long id) {
 		// Valeur recuperee
@@ -131,8 +105,8 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 	
 	
 	private void alimenterSourceSpinner(){
-		// Liste des valeurs retournees
-		listFichier = new ArrayList<String>();
+		// Liste source pour le spinner
+		List<String> sourceSpinner = new ArrayList<String>();
 		// Nom du fichier utilise
 		String nomFichier;
 		// Ligne de fichier
@@ -149,13 +123,14 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Parametre non prevu
 			nomFichier = "";
 		}
-			// Controle de l'association avec un non de fichier
-			if (nomFichier.equals("")) {
-				// Le parametre n'est pas associe a un fichier
-				textViewMessageArticleList.setText("Choix erroné");
-			}else{
-				// Verification de l'existence du fichier
-				File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
+		
+		// Controle de l'association avec un non de fichier
+		if (nomFichier.equals("")) {
+			// Le parametre n'est pas associe a un fichier
+			textViewMessageArticleList.setText("Choix erroné");
+		}else{
+			// Verification de l'existence du fichier
+			File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
 			if (f.exists()) {
 				// Recuperation des valeurs dans le fichier
 				try {
@@ -166,7 +141,7 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 					// Parcours du fichier
 					while( (ligne = br.readLine()) != null ){
 						// Alimentation de la liste
-						listFichier.add(ligne);
+						sourceSpinner.add(ligne);
 					}				
 					// Fermeture du buffer
 					br.close();
@@ -180,6 +155,14 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 					// Log de l'erreur
 					Log.e(TAG_APPLI, e.getMessage());
 				}
+				
+				// Definition de l'array adapter
+				 aa  = new ArrayAdapter(this,
+						  android.R.layout.simple_spinner_item
+						  , sourceSpinner);
+				aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				// Affectation de la source du spinner
+				spinnerListeSelection.setAdapter(aa);
 			}else{
 				// Le fichier associe n'existe pas
 				textViewMessageArticleList.setText("Fichier n'existe pas !");
@@ -273,7 +256,6 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 
 	            // -- Attribue a la listView l'adaptateur
 	            liste.setAdapter(sa);	
-			
 			
 		}
 	} // / TacheAsynchrone
