@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,15 +77,6 @@ public class DAOFichier {
 		}
 		return os;
 	}
-	
-	
-	
-	/*
-	public DAOFichier(InputStream is) throws IOException {
-		super();
-		inputStream = is;
-		this.getData();
-	}*/
 
 	// ---------------------------------------------------------------------------
 	// LECTURE DES DONNEES
@@ -197,6 +190,19 @@ public class DAOFichier {
 			throw new IndexOutOfBoundsException();
 		}
 		return record;
+	}
+	
+	public List<Map<String,String>> findByColumn(String colName, String value){
+		Map<String, String> record = new HashMap<String, String>();
+		List<Map<String,String>> result = new ArrayList<Map<String,String>>();
+		
+		for (int i = 0; i < this.nbRecords; i++) {
+			record = records.get(i);
+			if(record.containsKey(colName) && record.get(colName).equals(value)){
+				result.add(record);
+			}
+		}
+		return result;
 	}
 	
 	public List<Map<String,String>> getAll(){
