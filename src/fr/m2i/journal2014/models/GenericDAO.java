@@ -149,9 +149,15 @@ public class GenericDAO implements IDAO<Object>{
         Map<String, Integer> mapReturnType = new HashMap<String, Integer>();
         mapReturnType.put("int", 1);
         mapReturnType.put("class java.util.Calendar", 2);
+        
            
         //Conversion du type de retour en valeur entière
-        int intReturnType = Integer.valueOf(mapReturnType.get(returnType).toString());
+        int intReturnType;
+        if(mapReturnType.containsKey(returnType)){
+        	intReturnType = Integer.valueOf(mapReturnType.get(returnType).toString());
+        } else {
+        	intReturnType = 0;
+        }
 
         //En fonction du type on définit les règles de conversion en String
         switch (intReturnType) {
@@ -175,6 +181,17 @@ public class GenericDAO implements IDAO<Object>{
 
         return returnValue;
     }
+    /*
+    private int getReturnTypeAsInteger(String returnType){
+    	int returnTypeInteger = 0;
+    	if(returnType.equals("int")){
+    		returnTypeInteger = 1;
+    	} else if(returnType.equals("class java.util.Calendar")){
+    		returnTypeInteger = 2;
+    	}
+    	
+    	return returnTypeInteger;
+    }*/
 
     /**
      * Conversion d'un Calendar en date MySql
