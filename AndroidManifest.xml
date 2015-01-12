@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,8 +15,48 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".Login"
+            android:name="fr.m2i.journal2014.Login"
             android:label="@string/login_titre_fenetre" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.MenuPrincipal"
+            android:label="@string/title_activity_menu_principal" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.Journalistes"
+            android:label="@string/title_activity_journaliste" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.JournalisteForm"
+            android:label="@string/title_activity_journaliste_form" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.Statut"
+            android:label="@string/title_activity_statut" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.Categorie"
+            android:label="@string/title_activity_categorie" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.Rubrique"
+            android:label="@string/title_activity_rubrique" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.MotCle"
+            android:label="@string/title_activity_mot_cle" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.TestDAO"
+            android:label="@string/title_activity_test_dao" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.ArticlePlus"
+            android:label="@string/title_article_plus" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.RechArticle"
+            android:label="@string/title_activity_rech_article" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,40 +64,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuPrincipal"
-            android:label="@string/title_activity_menu_principal" >
-        </activity>
-        <activity
-            android:name=".Journalistes"
-            android:label="@string/title_activity_journaliste" >
-        </activity>
-        <activity
-            android:name=".JournalisteForm"
-            android:label="@string/title_activity_journaliste_form" >
-        </activity>
-        <activity
-            android:name=".Statut"
-            android:label="@string/title_activity_statut" >
-        </activity>
-        <activity
-            android:name=".Categorie"
-            android:label="@string/title_activity_categorie" >
-        </activity>
-        <activity
-            android:name=".Rubrique"
-            android:label="@string/title_activity_rubrique" >
-        </activity>
-        <activity
-            android:name=".MotCle"
-            android:label="@string/title_activity_mot_cle" >
-        </activity>
-        <activity
-            android:name=".TestDAO"
-            android:label="@string/title_activity_test_dao" >
-        </activity>
-        <activity
-            android:name=".ArticlePlus"
-            android:label="@string/title_article_plus" >
+            android:name="fr.m2i.journal2014.ArticleListe"
+            android:label="@string/title_activity_article_liste" >
         </activity>
     </application>
 

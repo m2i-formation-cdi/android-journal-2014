@@ -4,7 +4,8 @@
     <string name="app_name">Journal 2014</string>
 
     <!-- Un autre test -->
-    
+
+
     <!-- TEXTES COMMUNS -->
     <string name="bt_ok">OK</string>
     <string name="bt_annuler">ANNULER</string>
@@ -83,22 +84,28 @@
     <string name="label_monsieur">Monsieur</string>
     <string name="label_madame">Madame</string>
     <string name="title_activity_test_dao">TestDAO</string>
-            
-          <!-- ARTICLE PLUS -->
-    
-     <string name="textViewTitre">Titre</string>
-     <string name="editTextTitre"></string>
-     <string name="textViewChapeau">Chapeau</string>
-     <string name="textViewResume">Resume</string>
-     <string name="textViewTexte">Texte</string>
-     <string name="textViewContributeur">Contributeur</string>
-     <string name="buttonCls">Cls</string>
-     <string name="buttonAjouter">Ajouter</string>
-     <string name="title_article_plus">Article Plus</string>
-     
-    
-    
-    
-    
- 
+
+    <!-- ARTICLE PLUS -->
+
+    <string name="textViewTitre">Titre</string>
+    <string name="editTextTitre"></string>
+    <string name="textViewChapeau">Chapeau</string>
+    <string name="textViewResume">Resume</string>
+    <string name="textViewTexte">Texte</string>
+    <string name="textViewContributeur">Contributeur</string>
+    <string name="buttonCls">Cls</string>
+    <string name="buttonAjouter">Ajouter</string>
+    <string name="title_article_plus">Article Plus</string>
+    <string name="title_activity_article_par_mot_cle">ArticleParMotCle</string>
+    <string name="title_activity_rech_article">RechArticle</string>
+    <string name="title_activity_article_liste">ArticleListe</string>
+
+	<!--  ARTICLE LISTE -->
+    <string name="labelBoutonRetour">Retour</string>
+	<string name="defaultAffichage">Message&#8230;</string>
+	<string name="defaultTitreArticle">Titre article</string>
+	<string name="defaultDateParution">25/12/2014</string>
+	<string name="defaultChapeau">Chapeau article</string>
+	
+
 </resources>

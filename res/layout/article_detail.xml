@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/article_categorie_detail"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewIdArticle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Id article"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewTitreArticleCategorieDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/defaultTitreArticle"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewDateParutionArticleCategorieDetail"
+        android:layout_width="match_parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_height="wrap_content"
+        android:text="@string/defaultDateParution"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewChapeauArticleCategorieDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/defaultChapeau"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/textViewDecoCategorieDetail"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#d3d856"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+</LinearLayout>
