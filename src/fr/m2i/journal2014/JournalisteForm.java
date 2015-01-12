@@ -239,6 +239,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		String lsDate = fmtDate.format(dh.getTime());
 		editDateInscription.setText(lsDate);
 		
+		
 	}
 	
 	
@@ -311,6 +312,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		private void mapToPojo(Map<String, String> record){
 			this.nullToEmptyString(record);
 			
+			pojo.setIdContributeur(Integer.valueOf(record.get("id_contributeur").toString()));
 			pojo.setCiviliteContributeur(record.get("civilite_contributeur").toString().charAt(0));
 			pojo.setCv_contributeur(record.get("cv_contributeur").toString());
 			pojo.setEmailContributeur(record.get("email_contributeur").toString());
@@ -341,9 +343,6 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 			}
 			return record;
 		}
-		
-		
-		
 	}
 
 	@Override
@@ -362,6 +361,26 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		}
 		
 		finish();
+		
+	}
+	
+	private void formToPojo(){
+		char civ;
+		if(radioMadame.isChecked()){
+			civ = 'F';
+		} else {
+			civ = 'H';
+		}
+		
+		String statut = spinnerStatut.getSelectedItem().toString();
+		int idStatut = getIdFromStatut(statut);
+		
+		pojo.setId_statut(idStatut);
+		pojo.setCiviliteContributeur(civ);
+		pojo.setNomContributeur(editTextNom.getText().toString());
+		pojo.setEmailContributeur(editTextEmail.getText().toString());
+		pojo.setPrenomContributeur(editTextPrenom.getText().toString());
+		
 		
 	}
 	

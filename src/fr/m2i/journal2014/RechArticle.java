@@ -1,10 +1,11 @@
 package fr.m2i.journal2014;
 
-import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.app.ListActivity;
+import android.content.Intent;
 
 public class RechArticle extends ListActivity {
 	
