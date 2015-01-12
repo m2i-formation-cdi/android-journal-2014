@@ -1,15 +1,24 @@
 package fr.m2i.journal2014;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import fr.m2i.journal2014.models.DAOFichier;
+import fr.m2i.journal2014.models.DbConnexion;
+import fr.m2i.journal2014.models.GenericDAO;
+import fr.m2i.journal2014.models.PojoJournaliste;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -48,6 +57,8 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 	private Button btCancel;
 
 	private String pk;
+	
+	PojoJournaliste pojo;
 
 	private DatePickerDialog.OnDateSetListener datePickerDialogListener;
 
@@ -60,6 +71,8 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		
 		initEventListener();
 		
+		pojo = new PojoJournaliste();
+		
 		populateStatut();
 
 		// Récupération des paramètres
@@ -69,6 +82,9 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 
 		if (isNew) {
 			btDelete.setVisibility(View.INVISIBLE);
+		} else {
+			TacheAsynchrone task = new TacheAsynchrone();
+			task.execute("");
 		}
 	}
 
@@ -91,9 +107,6 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		editTextPhoto = (EditText) findViewById(R.id.editTextJournalistePhoto);
 		checkBoxOffrePartenaire = (CheckBox) findViewById(R.id.CheckJournalisteOffre);
 		editDateInscription = (EditText) findViewById(R.id.EditTextJournalisteDateInscription);
-		
-		
-
 	}
 
 	private void initEventListener() {
@@ -160,6 +173,84 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 			dpd.show();
 		}
 
+	}
+	
+	private void populateForm(){
+		editTextNom.setText(pojo.getNomContributeur());
+		editTextPrenom.setText(pojo.getPrenomContributeur());
+		editTextPseudo.setText(pojo.getPseudoContributeur());
+		editTextEmail.setText(pojo.getEmailContributeur());
+		editTextEmailConfirm.setText(pojo.getEmailContributeur());
+	}
+	
+	private class TacheAsynchrone extends AsyncTask <String, Integer, Map<String, String>> {		
+		@Override
+		protected Map<String, String> doInBackground(String... params) {
+			Map<String, String>resultSet = new HashMap<String, String>();
+			try {
+				Connection cn = DbConnexion.connect();
+				GenericDAO dao = new GenericDAO("contributeur", cn);
+				PojoJournaliste pojo = new PojoJournaliste();
+				pojo.setIdContributeur(Integer.valueOf(pk));
+				resultSet = dao.selectOneByPk(pojo);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			
+			return resultSet;
+		}
+		
+		/**
+		 * 
+		 */
+		protected void onPostExecute(Map<String, String> record) {
+			//populateListJournalistes();
+			mapToPojo(record);
+			populateForm();
+			
+		} // / onPostExecute
+		
+		private void mapToPojo(Map<String, String> record){
+			pojo.setCiviliteContributeur(record.get("civilite_contributeur").toString().charAt(0));
+			pojo.setCv_contributeur(record.get("cv_contributeur").toString());
+			pojo.setEmailContributeur(record.get("email_contributeur").toString());
+			pojo.setIdContributeur(Integer.valueOf(record.get("id_contributeur").toString()));
+			pojo.setMdpContributeur(record.get("mdp_contributeur").toString());
+			pojo.setNomContributeur(record.get("nom_contributeur").toString());
+			pojo.setOffresPartenaires(Integer.valueOf(record.get("offres_partenaires").toString()));
+			pojo.setPhotoContributeur(record.get("photo_contributeur").toString());
+			pojo.setPrenomContributeur(record.get("prenom_contributeur").toString());
+			pojo.setPseudoContributeur(record.get("pseudo_contributeur").toString());
+			pojo.setId_statut(Integer.valueOf(record.get("id_statut").toString()));
+			Calendar dateInscription = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.FRANCE);
+			try {
+				dateInscription.setTime(sdf.parse(record.get("date_inscription_contributeur").toString()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			pojo.setDate_inscription_contributeur(dateInscription);
+		}
+		
+		private String getStatut(String idStatut){
+			String statut = "";
+			try {
+				DAOFichier dao = new DAOFichier(getBaseContext(), R.raw.statut);
+				dao.setfirstLineContainsLabel(false);
+				dao.loadData();
+				List<Map<String,String>> records = dao.findByColumn("col1", idStatut);
+				if(records.size()>0){
+					statut = records.get(0).get("col2").toString();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return statut;
+			
+		}
+		
 	}
 
 	@Override

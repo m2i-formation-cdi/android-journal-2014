@@ -4,18 +4,18 @@ import java.util.Calendar;
 
 public class PojoJournaliste {
 
-	private int id_contributeur;
-	private String pseudo_contributeur;
-	private String email_contributeur;
-	private String mdp_contributeur;
-	private char civilite_contributeur;
-	private String nom_contributeur;
-	private String prenom_contributeur;
-	private String photo_contributeur;
-	private int offres_partenaires;
-	private Calendar date_inscription_contributeur;
-	private int id_statut;
-	private String cv_contributeur;
+	private int idContributeur;
+	private String pseudoContributeur;
+	private String emailContributeur;
+	private String mdpContributeur;
+	private char civiliteContributeur;
+	private String nomContributeur;
+	private String prenomContributeur;
+	private String photoContributeur;
+	private int offresPartenaires;
+	private Calendar dateInscriptionContributeur;
+	private int idStatut;
+	private String cvContributeur;
 	
 	/****************************************
 	 * Constructeur sans arguments
@@ -28,101 +28,101 @@ public class PojoJournaliste {
 	 * GETTERS AND SETTERS
 	 ****************************************/
 
-	public int getId_contributeur() {
-		return id_contributeur;
+	public int getIdContributeur() {
+		return idContributeur;
 	}
 
-	public void setId_contributeur(int id_contributeur) {
-		this.id_contributeur = id_contributeur;
+	public void setIdContributeur(int id_contributeur) {
+		this.idContributeur = id_contributeur;
 	}
 
-	public String getPseudo_contributeur() {
-		return pseudo_contributeur;
+	public String getPseudoContributeur() {
+		return pseudoContributeur;
 	}
 
-	public void setPseudo_contributeur(String pseudo_contributeur) {
-		this.pseudo_contributeur = pseudo_contributeur;
+	public void setPseudoContributeur(String pseudo_contributeur) {
+		this.pseudoContributeur = pseudo_contributeur;
 	}
 
-	public String getEmail_contributeur() {
-		return email_contributeur;
+	public String getEmailContributeur() {
+		return emailContributeur;
 	}
 
-	public void setEmail_contributeur(String email_contributeur) {
-		this.email_contributeur = email_contributeur;
+	public void setEmailContributeur(String email_contributeur) {
+		this.emailContributeur = email_contributeur;
 	}
 
-	public String getMdp_contributeur() {
-		return mdp_contributeur;
+	public String getMdpContributeur() {
+		return mdpContributeur;
 	}
 
-	public void setMdp_contributeur(String mdp_contributeur) {
-		this.mdp_contributeur = mdp_contributeur;
+	public void setMdpContributeur(String mdp_contributeur) {
+		this.mdpContributeur = mdp_contributeur;
 	}
 
-	public char getCivilite_contributeur() {
-		return civilite_contributeur;
+	public char getCiviliteContributeur() {
+		return civiliteContributeur;
 	}
 
-	public void setCivilite_contributeur(char civilite_contributeur) {
-		this.civilite_contributeur = civilite_contributeur;
+	public void setCiviliteContributeur(char civilite_contributeur) {
+		this.civiliteContributeur = civilite_contributeur;
 	}
 
-	public String getNom_contributeur() {
-		return nom_contributeur;
+	public String getNomContributeur() {
+		return nomContributeur;
 	}
 
-	public void setNom_contributeur(String nom_contributeur) {
-		this.nom_contributeur = nom_contributeur;
+	public void setNomContributeur(String nom_contributeur) {
+		this.nomContributeur = nom_contributeur;
 	}
 
-	public String getPrenom_contributeur() {
-		return prenom_contributeur;
+	public String getPrenomContributeur() {
+		return prenomContributeur;
 	}
 
-	public void setPrenom_contributeur(String prenom_contributeur) {
-		this.prenom_contributeur = prenom_contributeur;
+	public void setPrenomContributeur(String prenom_contributeur) {
+		this.prenomContributeur = prenom_contributeur;
 	}
 
-	public String getPhoto_contributeur() {
-		return photo_contributeur;
+	public String getPhotoContributeur() {
+		return photoContributeur;
 	}
 
-	public void setPhoto_contributeur(String photo_contributeur) {
-		this.photo_contributeur = photo_contributeur;
+	public void setPhotoContributeur(String photo_contributeur) {
+		this.photoContributeur = photo_contributeur;
 	}
 
-	public int getOffres_partenaires() {
-		return offres_partenaires;
+	public int getOffresPartenaires() {
+		return offresPartenaires;
 	}
 
-	public void setOffres_partenaires(int offres_partenaires) {
-		this.offres_partenaires = offres_partenaires;
+	public void setOffresPartenaires(int offres_partenaires) {
+		this.offresPartenaires = offres_partenaires;
 	}
 
 	public Calendar getDate_inscription_contributeur() {
-		return date_inscription_contributeur;
+		return dateInscriptionContributeur;
 	}
 
 	public void setDate_inscription_contributeur(
 			Calendar date_inscription_contributeur) {
-		this.date_inscription_contributeur = date_inscription_contributeur;
+		this.dateInscriptionContributeur = date_inscription_contributeur;
 	}
 
 	public int getId_statut() {
-		return id_statut;
+		return idStatut;
 	}
 
 	public void setId_statut(int id_statut) {
-		this.id_statut = id_statut;
+		this.idStatut = id_statut;
 	}
 
 	public String getCv_contributeur() {
-		return cv_contributeur;
+		return cvContributeur;
 	}
 
 	public void setCv_contributeur(String cv_contributeur) {
-		this.cv_contributeur = cv_contributeur;
+		this.cvContributeur = cv_contributeur;
 	}
 	
 	
