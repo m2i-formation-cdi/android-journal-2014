@@ -67,6 +67,9 @@
             android:name="fr.m2i.journal2014.ArticleListe"
             android:label="@string/title_activity_article_liste" >
         </activity>
+        <activity
+            android:name="fr.m2i.journal2014.Unarticle" >
+        </activity>
     </application>
 
 </manifest>

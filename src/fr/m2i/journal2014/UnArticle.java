@@ -48,7 +48,7 @@ public class UnArticle extends Activity {
 		textViewCategorieArticle = (TextView) findViewById(R.id.textViewCategorieArticle);
 		textViewMotsClesArticle = (TextView) findViewById(R.id.textViewMotsClesArticle);
 		
-		// récupération de l'identifiant de l'article depuis les autres pages.
+		// récupération de l'identifiant de l'article depuis les autres activités.
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		     //---------récupération de l'identifiant------------
