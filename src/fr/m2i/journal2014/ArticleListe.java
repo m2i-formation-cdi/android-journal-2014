@@ -82,11 +82,6 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		// Information sur le type de selection des articles
 		textViewMessageArticleList.setText("Article par " + selection);
 		
-		// Liaison avec le bouton de retour
-		buttonRetourArticleListe = (Button) findViewById(R.id.buttonRetourArticleListe);
-		// Rattachement du bouton au listener
-		buttonRetourArticleListe.setOnClickListener(this);
-		
 		// Liaison avec la liste deroulante
 		spinnerListeSelection = (Spinner) findViewById(R.id.spinnerListeSelection);
 		// Rattachement au listener
