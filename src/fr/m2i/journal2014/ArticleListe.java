@@ -119,6 +119,9 @@ public class ArticleListe extends ListActivity implements OnItemSelectedListener
 		}else if (selection.equals("Mots clés")) {
 			// Recherche par mot cle
 			nomFichier = "mot_cle.txt";
+		}else if (selection.equals("Catégories")) {
+			// Recherche par categorie
+			nomFichier = "categorie.txt";
 		}else{
 			// Parametre non prevu
 			nomFichier = "";
@@ -187,27 +190,30 @@ public class ArticleListe extends ListActivity implements OnItemSelectedListener
 			ResultSet rst;
 			
 			// Initialisation de la requete
-			monSql = "SELECT " +
+			monSql = "SELECT DISTINCT " +
 						"ar.id_article" +
 						",ar.titre_article" +
 						",ar.chapeau_article" +
 						",DATE_FORMAT(ar.date_parution_article,'%d/%m/%Y') date_parution_article" +
 					" FROM" +
 						" article ar" +
-						" INNER JOIN rubrique ru ON ru.id_rubrique=ar.id_rubrique" +
-						" INNER JOIN article_mot_cle amc ON amc.id_article=ar.id_article" +
-						" INNER JOIN mot_cle mc ON mc.id_mot_cle=amc.id_mot_cle" +
+						" LEFT JOIN rubrique ru ON ru.id_rubrique=ar.id_rubrique" +
+						" LEFT JOIN article_mot_cle amc ON amc.id_article=ar.id_article" +
+						" LEFT JOIN mot_cle mc ON mc.id_mot_cle=amc.id_mot_cle" +
+						" LEFT JOIN categorie cat ON cat.id_categorie=ar.id_categorie" +
 					" WHERE ar.etat_article=1";
 			// Determination de la condition de filtrage supplementaire
 			if( selection.equals("Rubriques") ){
 				monWhere = "AND ru.rubrique='" + monFiltre + "'";
 			}else if( selection.equals("Mots clés") ){
 				monWhere = "AND mc.mot_cle='" + monFiltre + "'";
+			}else if( selection.equals("Catégories") ){
+				monWhere = "AND cat.categorie='" + monFiltre + "'";
 			}else{
 				monWhere = "AND ar.id_rubrique=-1";
 			}
 			// Finalisation de la requete
-			monSql = monSql + " " + monWhere;
+			monSql = monSql + " " + monWhere + " ORDER BY ar.date_parution_article DESC LIMIT 0,25";
 //			Log.i(TAG_APPLI, "Selection : " + selection + " - Filtre : " + monFiltre);
 //			Log.i(TAG_APPLI, monSql);
 			// Recuperation de la liste des articles

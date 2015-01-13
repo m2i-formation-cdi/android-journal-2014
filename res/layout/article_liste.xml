@@ -23,11 +23,4 @@
         android:layout_weight="50" >
     </ListView>
 
-    <Button
-        android:id="@+id/buttonRetourArticleListe"
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/labelBoutonRetour" />
-
 </LinearLayout>
