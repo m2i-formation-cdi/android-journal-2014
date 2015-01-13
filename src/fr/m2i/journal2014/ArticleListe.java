@@ -60,7 +60,7 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		
 //		selection = "Rubriques";
 		selection = this.getIntent().getStringExtra("cle");
-		Log.i(TAG_APPLI, selection);
+//		Log.i(TAG_APPLI, selection);
 		
 		// Alimentation du Spinner
 		alimenterSourceSpinner();

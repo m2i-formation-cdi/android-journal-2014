@@ -22,7 +22,7 @@ import fr.m2i.journal2014.models.DbConnexion;
 public class RechArticle extends ListActivity implements OnClickListener {
 	
 	// Bouton de synchro
-	private Button buttonSynchroRechArticle;
+//	private Button buttonSynchroRechArticle;
 	// Tag pour le log
 	private static final String TAG_APPLI = "Journal2014";
 	// Contenu du fichier
@@ -33,11 +33,11 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rech_article);
 		
-		// Liaison avec le bouton de synchro
+/*		// Liaison avec le bouton de synchro
 		buttonSynchroRechArticle = (Button) findViewById(R.id.buttonSynchroRechArticle);
 		// Attachement au listener
 		buttonSynchroRechArticle.setOnClickListener(this);
-	}
+*/	}
 
 	
 	@Override
@@ -68,7 +68,7 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		/*
 		 *  Mise à jour des categories
 		 */
-		nomFichier = "categorie.txt";
+/*		nomFichier = "categorie.txt";
 		monSql = "SELECT categorie FROM categorie ORDER BY categorie";
 		//
 		param[0] = nomFichier;
@@ -78,7 +78,39 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		}catch(Exception e){
 			Log.e(TAG_APPLI, e.getMessage());
 		}
+*/		/*
+		 *  Fin synchro categorie
+		 */
 		/*
+		 *  Mise à jour des mots cles
+		 */
+/*		nomFichier = "mot_cle.txt";
+		monSql = "SELECT mot_cle FROM mot_cle ORDER BY mot_cle";
+		//
+		param[0] = nomFichier;
+		param[1] = monSql;
+		try{
+			new ChargeListeArticle().execute(param);
+		}catch(Exception e){
+			Log.e(TAG_APPLI, e.getMessage());
+		}
+*/		/*
+		 *  Fin synchro mot_cle
+		 */
+		/*
+		 *  Mise à jour des rubriques
+		 */
+/*		nomFichier = "rubrique.txt";
+		monSql = "SELECT rubrique FROM rubrique ORDER BY rubrique";
+		//
+		param[0] = nomFichier;
+		param[1] = monSql;
+		try{
+			new ChargeListeArticle().execute(param);
+		}catch(Exception e){
+			Log.e(TAG_APPLI, e.getMessage());
+		}
+*/		/*
 		 *  Fin synchro categorie
 		 */
 		

@@ -14,9 +14,9 @@
     </string-array> 
     
     <string-array name="rech_article">
-        <item>Rubriques</item>
         <item>Catégories</item>
         <item>Mots clés</item>
-    </string-array>
+        <item>Rubriques</item>
+        </string-array>
     
 </resources>

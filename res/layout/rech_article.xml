@@ -9,12 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RechArticle" >
 
+<!-- 
     <Button
         android:id="@+id/buttonSynchroRechArticle"
         android:layout_width="266dp"
         android:layout_height="wrap_content"
         android:text="Synchroniser" />
-
+-->
     <TextView
         android:id="@+id/textViewRechArticle"
         android:layout_width="wrap_content"
