@@ -49,7 +49,6 @@ public class ArticleListe extends ListActivity implements OnItemSelectedListener
 	// Tag pour le debug
 	private final static String TAG_APPLI = "Journal2014";
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
