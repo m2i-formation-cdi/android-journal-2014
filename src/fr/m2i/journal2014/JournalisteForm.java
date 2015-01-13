@@ -2,6 +2,7 @@ package fr.m2i.journal2014;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,8 +37,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class JournalisteForm extends Activity implements OnFocusChangeListener, OnClickListener, OnItemSelectedListener {
+public class JournalisteForm extends Activity implements OnFocusChangeListener,
+		OnClickListener, OnItemSelectedListener {
 
 	private EditText editDateInscription;
 	private RadioButton radioMadame;
@@ -58,15 +61,15 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 	private Button btValid;
 	private Button btDelete;
 	private Button btCancel;
-	
+
 	private ArrayAdapter<String> arrayAdapterStatut;
 
 	private String pk;
-	
+
 	private PojoJournaliste pojo;
 
 	private DatePickerDialog.OnDateSetListener datePickerDialogListener;
-	
+
 	private String validationErrors;
 
 	@Override
@@ -75,11 +78,11 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		setContentView(R.layout.journaliste_form);
 
 		initComponents();
-		
+
 		initEventListener();
-		
+
 		pojo = new PojoJournaliste();
-		
+
 		populateStatut();
 
 		// Récupération des paramètres
@@ -118,24 +121,22 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 
 	private void initEventListener() {
 		// Écouteurs et gestion d'événements
-		
+
 		btCancel.setOnClickListener(this);
 		btDelete.setOnClickListener(this);
 		btValid.setOnClickListener(this);
-		
+
 		spinnerStatut.setOnItemSelectedListener(this);
-		
+
 		// Gestion du contrôle datePicker
 		datePickerDialogListener = new DatePickerDialog.OnDateSetListener() {
 			public void onDateSet(DatePicker dp, int annee, int mois, int jour) {
 				// On affecte à dh les valeurs sélectionnées par l'UT
 				Calendar dh = Calendar.getInstance();
-				 
+
 				dh.set(Calendar.YEAR, annee);
 				dh.set(Calendar.MONTH, mois);
 				dh.set(Calendar.DAY_OF_MONTH, jour);
-				
-				
 
 				// --- Formatage de la date (sans l'heure) en fonction de la
 				// locale
@@ -149,20 +150,23 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 				editDateInscription.setText(lsDate);
 			}
 		}; // / DatePickerDialog.OnDateSetListener
-		
+
 		editDateInscription.setOnFocusChangeListener(this);
-		
+
 	}
-	
-	private void populateStatut(){
+
+	private void populateStatut() {
 		try {
 			DAOFichier dao = new DAOFichier(getBaseContext(), R.raw.statut);
 			dao.setfirstLineContainsLabel(false);
 			dao.loadData();
 			String statut[] = dao.getColumnAsArray("col2");
-			
-			this.arrayAdapterStatut = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,statut);
-			this.arrayAdapterStatut.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+			this.arrayAdapterStatut = new ArrayAdapter<String>(
+					getBaseContext(), android.R.layout.simple_spinner_item,
+					statut);
+			this.arrayAdapterStatut
+					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spinnerStatut.setAdapter(this.arrayAdapterStatut);
 		} catch (IOException e) {
 			Log.e("Erreur Spinner Statut", e.getMessage());
@@ -170,19 +174,19 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 			Log.e("Erreur Spinner Statut", e.getMessage());
 		}
 	}
-	
-	private void setSelectedStatut(String value){
+
+	private void setSelectedStatut(String value) {
 		int nbItems = arrayAdapterStatut.getCount();
 		String item;
 		boolean found = false;
-		
+
 		for (int i = 0; i < nbItems && !found; i++) {
 			item = arrayAdapterStatut.getItem(i);
-			if(item.equals(value)){
+			if (item.equals(value)) {
 				found = true;
 				spinnerStatut.setSelection(i);
 			}
-			
+
 		}
 	}
 
@@ -191,13 +195,12 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 
 		if (v == editDateInscription && hasFocus) {
 			Calendar dh;
-			if(pojo.getDate_inscription_contributeur() == null){
+			if (pojo.getDate_inscription_contributeur() == null) {
 				dh = Calendar.getInstance();
 			} else {
 				dh = pojo.getDate_inscription_contributeur();
 			}
-			
-			
+
 			DatePickerDialog dpd = new DatePickerDialog(this,
 					datePickerDialogListener, dh.get(Calendar.YEAR),
 					dh.get(Calendar.MONTH), dh.get(Calendar.DAY_OF_MONTH));
@@ -205,8 +208,8 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		}
 
 	}
-	
-	private void populateForm(){
+
+	private void populateForm() {
 		editTextNom.setText(pojo.getNomContributeur());
 		editTextPrenom.setText(pojo.getPrenomContributeur());
 		editTextPseudo.setText(pojo.getPseudoContributeur());
@@ -214,44 +217,44 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		editTextEmailConfirm.setText(pojo.getEmailContributeur());
 		editTextMotDePasse.setText(pojo.getMdpContributeur());
 		editTextMotDePasseConfirm.setText(pojo.getMdpContributeur());
-		
-		if(pojo.getOffresPartenaires() == 1){
+		editTextPhoto.setText(pojo.getPhotoContributeur());
+
+		if (pojo.getOffresPartenaires() == 1) {
 			checkBoxOffrePartenaire.setChecked(true);
 		}
-		
-		if(pojo.getCiviliteContributeur() == 'H'){
+
+		if (pojo.getCiviliteContributeur() == 'H') {
 			radioMonsieur.setChecked(true);
 		} else {
 			radioMadame.setChecked(true);
 		}
-		
-		String statut = this.getStatutFromId(String.valueOf(pojo.getId_statut()));
+
+		String statut = this
+				.getStatutFromId(String.valueOf(pojo.getId_statut()));
 		this.setSelectedStatut(statut);
-		
+
 		Calendar dh;
-		if(pojo.getDate_inscription_contributeur()== null){
+		if (pojo.getDate_inscription_contributeur() == null) {
 			dh = Calendar.getInstance();
 		} else {
 			dh = pojo.getDate_inscription_contributeur();
 		}
-		DateFormat fmtDate = DateFormat.getDateInstance(
-				DateFormat.LONG, Locale.FRANCE);
+		DateFormat fmtDate = DateFormat.getDateInstance(DateFormat.LONG,
+				Locale.FRANCE);
 		String lsDate = fmtDate.format(dh.getTime());
 		editDateInscription.setText(lsDate);
-		
-		
+
 	}
-	
-	
-	
-	private String getStatutFromId(String idStatut){
+
+	private String getStatutFromId(String idStatut) {
 		String statut = "";
 		try {
 			DAOFichier dao = new DAOFichier(getBaseContext(), R.raw.statut);
 			dao.setfirstLineContainsLabel(false);
 			dao.loadData();
-			List<Map<String,String>> records = dao.findByColumn("col1", idStatut);
-			if(records.size()>0){
+			List<Map<String, String>> records = dao.findByColumn("col1",
+					idStatut);
+			if (records.size() > 0) {
 				statut = records.get(0).get("col2").toString();
 			}
 		} catch (IOException e) {
@@ -260,16 +263,18 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		}
 		return statut;
 	}
-	
-	private int getIdFromStatut(String statut){
+
+	private int getIdFromStatut(String statut) {
 		int idStatut = 0;
 		try {
 			DAOFichier dao = new DAOFichier(getBaseContext(), R.raw.statut);
 			dao.setfirstLineContainsLabel(false);
 			dao.loadData();
-			List<Map<String,String>> records = dao.findByColumn("col2", statut);
-			if(records.size()>0){
-				idStatut = Integer.valueOf(records.get(0).get("col1").toString());
+			List<Map<String, String>> records = dao
+					.findByColumn("col2", statut);
+			if (records.size() > 0) {
+				idStatut = Integer.valueOf(records.get(0).get("col1")
+						.toString());
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -277,17 +282,19 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 		}
 		return idStatut;
 	}
-	
+
 	/******************************************************************************
-	 * Tâche asynchrone pour le chargement des données depuis la base de données 
-	 * vers le formulaire 
+	 * Tâche asynchrone pour le chargement des données depuis la base de données
+	 * vers le formulaire
+	 * 
 	 * @author seb
 	 *
 	 *******************************************************************************/
-	private class AsyncLoadFromDataBase extends AsyncTask <String, Integer, Map<String, String>> {		
+	private class AsyncLoadFromDataBase extends
+			AsyncTask<String, Integer, Map<String, String>> {
 		@Override
 		protected Map<String, String> doInBackground(String... params) {
-			Map<String, String>resultSet = new HashMap<String, String>();
+			Map<String, String> resultSet = new HashMap<String, String>();
 			try {
 				Connection cn = DbConnexion.connect();
 				GenericDAO dao = new GenericDAO("contributeur", cn);
@@ -296,117 +303,202 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener, 
 				resultSet = dao.selectOneByPk(pojo);
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			}
 			return resultSet;
 		}
-		
+
 		/**
 		 * 
 		 */
 		protected void onPostExecute(Map<String, String> record) {
 			mapToPojo(record);
 			populateForm();
-			
+
 		} // / onPostExecute
-		
-		private void mapToPojo(Map<String, String> record){
+
+		private void mapToPojo(Map<String, String> record) {
 			this.nullToEmptyString(record);
-			
-			pojo.setIdContributeur(Integer.valueOf(record.get("id_contributeur").toString()));
-			pojo.setCiviliteContributeur(record.get("civilite_contributeur").toString().charAt(0));
+
+			pojo.setIdContributeur(Integer.valueOf(record
+					.get("id_contributeur").toString()));
+			pojo.setCiviliteContributeur(record.get("civilite_contributeur")
+					.toString().charAt(0));
 			pojo.setCv_contributeur(record.get("cv_contributeur").toString());
-			pojo.setEmailContributeur(record.get("email_contributeur").toString());
-			pojo.setIdContributeur(Integer.valueOf(record.get("id_contributeur").toString()));
+			pojo.setEmailContributeur(record.get("email_contributeur")
+					.toString());
+			pojo.setIdContributeur(Integer.valueOf(record
+					.get("id_contributeur").toString()));
 			pojo.setMdpContributeur(record.get("mdp_contributeur").toString());
 			pojo.setNomContributeur(record.get("nom_contributeur").toString());
-			pojo.setOffresPartenaires(Integer.valueOf(record.get("offres_partenaires").toString()));
-			pojo.setPhotoContributeur(record.get("photo_contributeur").toString());
-			pojo.setPrenomContributeur(record.get("prenom_contributeur").toString());
-			pojo.setPseudoContributeur(record.get("pseudo_contributeur").toString());
-			pojo.setId_statut(Integer.valueOf(record.get("id_statut").toString()));
+			pojo.setOffresPartenaires(Integer.valueOf(record.get(
+					"offres_partenaires").toString()));
+			pojo.setPhotoContributeur(record.get("photo_contributeur")
+					.toString());
+			pojo.setPrenomContributeur(record.get("prenom_contributeur")
+					.toString());
+			pojo.setPseudoContributeur(record.get("pseudo_contributeur")
+					.toString());
+			pojo.setId_statut(Integer.valueOf(record.get("id_statut")
+					.toString()));
 			Calendar dateInscription = Calendar.getInstance();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.FRANCE);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
+					Locale.FRANCE);
 			try {
-				dateInscription.setTime(sdf.parse(record.get("date_inscription_contributeur").toString()));
+				dateInscription.setTime(sdf.parse(record.get(
+						"date_inscription_contributeur").toString()));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			pojo.setDate_inscription_contributeur(dateInscription);
 		}
-		
-		private Map<String, String> nullToEmptyString(Map<String, String> record){
+
+		private Map<String, String> nullToEmptyString(Map<String, String> record) {
 			Set<String> keys = record.keySet();
 			for (Object key : keys) {
-				if(record.get(key) == null){
+				if (record.get(key) == null) {
 					record.put(key.toString(), "");
 				}
 			}
 			return record;
 		}
-	}
+	}/// AsyncLoadFromDatabase
+	/************************************************************************************
+	 * 
+	 * @author seb
+	 *
+	 ************************************************************************************/
+	private class AsyncPersistInDataBase extends AsyncTask <String, Integer, String > {
+
+		@Override
+		protected String doInBackground(String... params) {
+			Connection cn;
+			String message = "";
+			try {
+				cn = DbConnexion.connect();
+				GenericDAO dao = new GenericDAO("contributeur", cn);
+				if(params[0].equals("DELETE")){
+					dao.delete(pojo);
+					message = "Votre enregistrement a été supprimé";
+				} else if(isNew){
+					dao.insert(pojo);
+					cn.commit();
+					message = "Votre enregistrement a été sauvegardé";
+				} else {
+					dao.update(pojo);
+					cn.commit();
+					message = "Votre enregistrement a été modifié";
+				}
+			} catch (Exception e) {
+				message = "Une erreur empêche l'exécution de votre commande";
+				e.printStackTrace();
+			}
+			
+			return message;
+		}
+		
+		protected void onPostExecute(String message) {
+			Toast msgToats = new Toast(getBaseContext());
+			Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG);
+			msgToats.show();
+
+		} // / onPostExecute
+		
+	}/// AsyncPersistInDataBase
 
 	@Override
 	public void onClick(View v) {
-		
-		if(v==btCancel){
+
+		if (v == btCancel) {
+
+		}
+
+		if (v == btValid) {
+			if(this.validateForm()){
+				this.formToPojo();
+				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
+				persistTask.execute("AddEdit");
+			}
 			
 		}
-		
-		if(v== btValid){
-			
+
+		if (v == btDelete) {
+			if(! isNew){
+				this.formToPojo();
+				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
+				persistTask.execute("Delete");
+			} else {
+				String message = "Vous ne pouvez pas supprimer un nouvel enregistrement";
+				Toast msgToats = new Toast(getBaseContext());
+				Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG);
+				msgToats.show();
+			}
 		}
-		
-		if(v==btDelete){
-			
-		}
-		
+
 		finish();
-		
+
 	}
-	
-	private void formToPojo(){
+
+	private void formToPojo() {
 		char civ;
-		if(radioMadame.isChecked()){
+		if (radioMadame.isChecked()) {
 			civ = 'F';
 		} else {
 			civ = 'H';
 		}
-		
+
 		String statut = spinnerStatut.getSelectedItem().toString();
 		int idStatut = getIdFromStatut(statut);
-		
+
 		pojo.setId_statut(idStatut);
 		pojo.setCiviliteContributeur(civ);
 		pojo.setNomContributeur(editTextNom.getText().toString());
 		pojo.setEmailContributeur(editTextEmail.getText().toString());
 		pojo.setPrenomContributeur(editTextPrenom.getText().toString());
+		pojo.setMdpContributeur(editTextMotDePasse.getText().toString());
+		pojo.setPseudoContributeur(editTextPseudo.getText().toString());
+		pojo.setPhotoContributeur(editTextPhoto.getText().toString());
+		if (!pk.equals("")) {
+			pojo.setIdContributeur(Integer.valueOf(pk));
+		}
+
+		if(checkBoxOffrePartenaire.isChecked()){
+			pojo.setOffresPartenaires(1);
+		}
 		
-		
+		String inutDateInscription = editDateInscription.getText().toString();
+		if (!inutDateInscription.equals("")) {
+			try {
+				Calendar dateInscription = Calendar.getInstance();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+				dateInscription.setTime(sdf.parse(inutDateInscription));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
-	
-	private boolean validateForm(){
+
+	private boolean validateForm() {
 		boolean isValid = true;
-		
-		
-		
+
 		return isValid;
-		
+
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
-		if(view == spinnerStatut){
+		if (view == spinnerStatut) {
 			String statut = parent.getSelectedItem().toString();
 			int idStatut = getIdFromStatut(statut);
 			pojo.setId_statut(idStatut);
 		}
-		
+
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
