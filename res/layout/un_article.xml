@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="247dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".UnArticle" >
+
+        <TextView
+            android:id="@+id/textViewTitreArticle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Titre"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewDateParutionArticle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="date_parution"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewPar"
+                android:layout_width="41dp"
+                android:layout_height="wrap_content"
+                android:text="@string/par"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewContributeurArticle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="contributeurs"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/YellowGreen"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewChapoArticle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chapô"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20sp" />
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewResumeArticle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resume"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="18sp" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/textViewTexteArticle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texte article"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rubrique : "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textViewNomRubrique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nom rubrique"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Catégorie : "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textViewCategorieArticle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="categorie article"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mot(s)-Clé(s) : "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textViewMotsClesArticle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mot(s) clé(s) article"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

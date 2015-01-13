@@ -107,5 +107,8 @@
 	<string name="defaultDateParution">25/12/2014</string>
 	<string name="defaultChapeau">Chapeau article</string>
 	
+	<!-- UN ARTICLE -->
+    <string name="par">PAR</string>
+	
 
 </resources>

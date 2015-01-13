@@ -4,5 +4,7 @@
     <color name="Noir">#000000</color>
     <color name="Blanc">#FFFFFF</color>
     
+    <color name="YellowGreen">#9ACD32</color>
+    
     <color name="Erreur">#FF0000</color>
 </resources>

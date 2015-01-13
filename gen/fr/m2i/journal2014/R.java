@@ -16,9 +16,10 @@ public final class R {
     }
     public static final class color {
         public static final int Blanc=0x7f070002;
-        public static final int Erreur=0x7f070003;
+        public static final int Erreur=0x7f070004;
         public static final int Noir=0x7f070001;
         public static final int Rouge=0x7f070000;
+        public static final int YellowGreen=0x7f070003;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -44,7 +45,7 @@ public final class R {
         public static final int EditTextJournalisteDateInscription=0x7f0b0028;
         public static final int LayoutListeJournalistes=0x7f0b002f;
         public static final int LinearLayout1=0x7f0b0008;
-        public static final int action_settings=0x7f0b0053;
+        public static final int action_settings=0x7f0b0060;
         public static final int article_categorie_detail=0x7f0b0000;
         public static final int buttonAjoutJournaliste=0x7f0b002e;
         public static final int buttonAjouter=0x7f0b0014;
@@ -93,6 +94,7 @@ public final class R {
         public static final int lstJournalisteId=0x7f0b0030;
         public static final int lstJournalisteNom=0x7f0b0031;
         public static final int lstJournalisteStatut=0x7f0b0032;
+        public static final int nav=0x7f0b0053;
         public static final int radioGroup1=0x7f0b001d;
         public static final int radioJournalisteMadame=0x7f0b001e;
         public static final int radioJournalisteMonsieur=0x7f0b001f;
@@ -102,11 +104,17 @@ public final class R {
         public static final int spinnerListeSelection=0x7f0b0007;
         public static final int spinnerMotsCles=0x7f0b003a;
         public static final int spinnerRubrique=0x7f0b0016;
+        public static final int textView2=0x7f0b005b;
+        public static final int textView3=0x7f0b005d;
         public static final int textView4=0x7f0b0017;
+        public static final int textViewCategorieArticle=0x7f0b005e;
         public static final int textViewCategories=0x7f0b001b;
         public static final int textViewChapeau=0x7f0b000b;
         public static final int textViewChapeauArticleCategorieDetail=0x7f0b0004;
+        public static final int textViewChapoArticle=0x7f0b0058;
         public static final int textViewContributeur=0x7f0b0011;
+        public static final int textViewContributeurArticle=0x7f0b0057;
+        public static final int textViewDateParutionArticle=0x7f0b0055;
         public static final int textViewDateParutionArticleCategorieDetail=0x7f0b0003;
         public static final int textViewDecoCategorieDetail=0x7f0b0005;
         public static final int textViewIdArticle=0x7f0b0001;
@@ -116,13 +124,19 @@ public final class R {
         public static final int textViewMessageMotCle=0x7f0b0043;
         public static final int textViewMessageRubrique=0x7f0b0051;
         public static final int textViewMotCle=0x7f0b0019;
+        public static final int textViewMotsClesArticle=0x7f0b005f;
+        public static final int textViewNomRubrique=0x7f0b005c;
+        public static final int textViewPar=0x7f0b0056;
         public static final int textViewPassword=0x7f0b0036;
         public static final int textViewRechArticle=0x7f0b0044;
         public static final int textViewResume=0x7f0b000d;
+        public static final int textViewResumeArticle=0x7f0b0059;
         public static final int textViewRubrique=0x7f0b0015;
         public static final int textViewTestDaoMessage=0x7f0b0052;
         public static final int textViewTexte=0x7f0b000f;
+        public static final int textViewTexteArticle=0x7f0b005a;
         public static final int textViewTitre=0x7f0b0009;
+        public static final int textViewTitreArticle=0x7f0b0054;
         public static final int textViewTitreArticleCategorieDetail=0x7f0b0002;
     }
     public static final class layout {
@@ -140,6 +154,7 @@ public final class R {
         public static final int rubrique=0x7f03000b;
         public static final int statut=0x7f03000c;
         public static final int test_dao=0x7f03000d;
+        public static final int un_article=0x7f03000e;
     }
     public static final class menu {
         public static final int article_liste=0x7f0a0000;
@@ -211,6 +226,9 @@ public final class R {
         public static final int modifier=0x7f09000b;
         public static final int moins=0x7f09000a;
         public static final int mot_cle=0x7f090018;
+        /**  UN ARTICLE 
+         */
+        public static final int par=0x7f090056;
         public static final int plus=0x7f090009;
         public static final int precedent=0x7f09000d;
         public static final int premier=0x7f09000c;
