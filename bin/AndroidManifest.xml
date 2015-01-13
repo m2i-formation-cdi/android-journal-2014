@@ -17,11 +17,6 @@
         <activity
             android:name="fr.m2i.journal2014.Login"
             android:label="@string/login_titre_fenetre" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="fr.m2i.journal2014.MenuPrincipal"
@@ -69,6 +64,11 @@
         </activity>
         <activity
             android:name="fr.m2i.journal2014.UnArticle" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
