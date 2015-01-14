@@ -33,18 +33,14 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rech_article);
 		
-/*		// Liaison avec le bouton de synchro
-		buttonSynchroRechArticle = (Button) findViewById(R.id.buttonSynchroRechArticle);
-		// Attachement au listener
-		buttonSynchroRechArticle.setOnClickListener(this);
-*/	}
+	}
 
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		//1. Récuperer le nom de l'élément sélectionné - OK -
-		//2. Transmettre l'info sélectionnee a l'activity apellee
+		//1. Recuperer le nom de l'element selectionne - OK -
+		//2. Transmettre l'info sï¿½lectionnee a l'activity apellee
 		//3. On demarre l'activity
 		// Recuperation de la selection
 		String lsSelection = l.getItemAtPosition(position).toString();
@@ -66,7 +62,7 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		// Tableau de parametres
 		String[] param = {"",""};
 		/*
-		 *  Mise à jour des categories
+		 *  Mise ï¿½ jour des categories
 		 */
 /*		nomFichier = "categorie.txt";
 		monSql = "SELECT categorie FROM categorie ORDER BY categorie";
@@ -82,7 +78,7 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		 *  Fin synchro categorie
 		 */
 		/*
-		 *  Mise à jour des mots cles
+		 *  Mise ï¿½ jour des mots cles
 		 */
 /*		nomFichier = "mot_cle.txt";
 		monSql = "SELECT mot_cle FROM mot_cle ORDER BY mot_cle";
@@ -98,7 +94,7 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		 *  Fin synchro mot_cle
 		 */
 		/*
-		 *  Mise à jour des rubriques
+		 *  Mise ï¿½ jour des rubriques
 		 */
 /*		nomFichier = "rubrique.txt";
 		monSql = "SELECT rubrique FROM rubrique ORDER BY rubrique";
@@ -117,6 +113,8 @@ public class RechArticle extends ListActivity implements OnClickListener {
 	}
 
 
+	
+/*	
 	private class ChargeListeArticle extends AsyncTask<String, Integer, String[]>{
 
 		@Override
@@ -159,6 +157,8 @@ public class RechArticle extends ListActivity implements OnClickListener {
 			synchroParam(param[0], param[1]);
 		}
 	}
+
+*/	
 	
 	/*
 	 *  Synchro des fichiers
@@ -177,4 +177,5 @@ public class RechArticle extends ListActivity implements OnClickListener {
 		
 	}
 	
+
 }
