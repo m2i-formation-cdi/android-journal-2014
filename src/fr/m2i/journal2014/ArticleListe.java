@@ -12,9 +12,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,8 +47,6 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 	private ArrayAdapter<String> aa;
 	// Mot selectionne pour filtrer les article
 	private String monFiltre;
-	// Liste des articles selectionnes
-//	List<Map<String, String>> listeArticle = null;
 	// Definition d'un contexte
 	private Context contexte; 
 	
@@ -58,51 +58,37 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.article_liste);
 		
-//		selection = "Rubriques";
 		selection = this.getIntent().getStringExtra("cle");
-//		Log.i(TAG_APPLI, selection);
-		
-		// Alimentation du Spinner
-		alimenterSourceSpinner();
 		
 		initInterface();
 		
-		
-		
+		// Alimentation du Spinner
+		alimenterSourceSpinner();
+				
 	}
 
 	private void initInterface() {
 
 		// Recuperation du type de selection des articles transmis par l'activite appelante
-//		selection = this.getIntent().getStringExtra("cle");
-//		selection = "Rubriques";
+		selection = this.getIntent().getStringExtra("cle");
 
 		// Liaison avec la zone de message
 		textViewMessageArticleList = (TextView) findViewById(R.id.textViewMessageArticleList);
 		// Information sur le type de selection des articles
 		textViewMessageArticleList.setText("Article par " + selection);
-<<<<<<< Upstream, based on branch 'master' of https://github.com/m2i-formation-cdi/android-journal-2014.git
-=======
+
 		
 		// Liaison avec le bouton de retour
 		//buttonRetourArticleListe = (Button) findViewById(R.id.buttonRetourArticleListe);
 		// Rattachement du bouton au listener
 		//buttonRetourArticleListe.setOnClickListener(this);
->>>>>>> e71ebcd JournalisteForm CRUD et photo
+
 		
 		// Liaison avec la liste deroulante
 		spinnerListeSelection = (Spinner) findViewById(R.id.spinnerListeSelection);
 		// Rattachement au listener
 		spinnerListeSelection.setOnItemSelectedListener(this);
-		// Definition de l'array adapter
-		 aa  = new ArrayAdapter(this,
-				  android.R.layout.simple_spinner_item
-				  , listFichier);
 				
-		aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Affectation de la source du spinner
-		spinnerListeSelection.setAdapter(aa);
-
 		// Instanciation du contexte
 		contexte = this.getBaseContext();
 		
@@ -154,13 +140,26 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Parametre non prevu
 			nomFichier = "";
 		}
+
+		
+		
+		if(selection.equals("Paru ce jour")){
+			listFichier.add(selection);
+		}else if (nomFichier.equals("")) {
+			// Le parametre n'est pas associe a un fichier
+			textViewMessageArticleList.setText("Choix erroné");
+		}else {
+			// Verification de l'existence du fichier
+			//File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
+
 			// Controle de l'association avec un non de fichier
-			if (nomFichier.equals("")) {
+			//if (nomFichier.equals("")) {
 				// Le parametre n'est pas associe a un fichier
-				textViewMessageArticleList.setText("Choix erroné");
-			}else{
+			//	textViewMessageArticleList.setText("Choix erroné");
+			//}else{
 				// Verification de l'existence du fichier
 				File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
+
 			if (f.exists()) {
 				// Recuperation des valeurs dans le fichier
 				try {
@@ -189,7 +188,16 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 				// Le fichier associe n'existe pas
 				textViewMessageArticleList.setText("Fichier n'existe pas !");
 			}
+		
 		}
+		// Definition de l'array adapter
+		 aa  = new ArrayAdapter(this,
+				  android.R.layout.simple_spinner_item
+				  , listFichier);
+				
+		aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Affectation de la source du spinner
+		spinnerListeSelection.setAdapter(aa);
 	} // Fin recuperation contenu de fichier
 	
 	private class ChargeListeArticle extends AsyncTask<String, Integer, List<HashMap<String, String>> >{
@@ -224,12 +232,15 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Determination de la condition de filtrage supplementaire
 			if( selection.equals("Rubriques") ){
 				monWhere = "AND ru.rubrique='" + monFiltre + "'";
+
 			}else if( selection.equals("Mots clés") ){
 				monWhere = "AND mc.mot_cle='" + monFiltre + "'";
 			}else if( selection.equals("Catégories") ){
 				monWhere = "AND cat.categorie='" + monFiltre + "'";
+			}else if( selection.equals("Paru ce jour") ){
+				monWhere = "AND DATE(ar.date_parution_article)=DATE(NOW())";
 			}else{
-				monWhere = "AND ar.id_rubrique=-1";
+				monWhere = "";
 			}
 			// Finalisation de la requete
 			monSql = monSql + " " + monWhere + " ORDER BY ar.date_parution_article DESC LIMIT 0,25";
@@ -275,7 +286,7 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 	                contexte,
 	                maListe, // nom du map associ� definissant la source
 	                R.layout.article_detail,
-	                new String[] {"id_article", "titre_article", "date_parution_article", "chapeau_article"}, // cl� du map source
+	                new String[] {"id_article", "titre_article", "date_parution_article", "chapeau_article"}, // cle du map source
 	                new int[] {R.id.textViewIdArticle, R.id.textViewTitreArticleCategorieDetail, R.id.textViewDateParutionArticleCategorieDetail, R.id.textViewChapeauArticleCategorieDetail} // R�f�rence du champ dans le layout secondaire
 	            );
 
@@ -286,5 +297,16 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		}
 	} // / TacheAsynchrone
 
+	public void onListItemClick(ListView parent, View v, int position, long id) {
+		// Recuperation de l'élément sélectionner
+		Map<String,String> unArticle = (HashMap<String, String>) parent.getAdapter().getItem(position);
+		
+		// Declaration d'une intention
+		Intent intentionArticle = new Intent();
+		// Affectation de l'id de l'article
+		intentionArticle.putExtra("idArticle", unArticle.get("id_article"));
+		// Appel de l'intention
+		startActivity(intentionArticle);
+	}
 
 }
