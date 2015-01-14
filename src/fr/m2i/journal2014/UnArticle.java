@@ -20,7 +20,8 @@ import android.widget.Toast;
 
 public class UnArticle extends Activity {
 
-	private TextView textViewTitreArticle;
+ 	private TextView textViewTitreArticle;
+ 
 	private TextView textViewDateParutionArticle;
 	private TextView textViewContributeurArticle;
 	private TextView textViewChapoArticle;
@@ -37,6 +38,8 @@ public class UnArticle extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.un_article);
+		
+		Log.i("Journal2014", "Test");
 
 		textViewTitreArticle = (TextView) findViewById(R.id.textViewTitreArticle);
 		textViewDateParutionArticle = (TextView) findViewById(R.id.textViewDateParutionArticle);
@@ -58,6 +61,7 @@ public class UnArticle extends Activity {
 		
 		// affichageArticle();
 		new TacheAsynchroneBD().execute("");
+		
 	}
 
 	/*

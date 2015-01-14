@@ -36,8 +36,6 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 	// Liste deroulante de choix
 	private Spinner spinnerListeSelection;
 	// Bouton de retour
-	private Button buttonRetourArticleListe;
-	// Texte de message
 	private TextView textViewMessageArticleList;
 	// Source du Spinner
 	List<String> listFichier;
@@ -58,8 +56,6 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.article_liste);
 		
-		selection = this.getIntent().getStringExtra("cle");
-		
 		initInterface();
 		
 		// Alimentation du Spinner
@@ -69,6 +65,9 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 
 	private void initInterface() {
 
+		// Instanciation du contexte
+		contexte = this.getBaseContext();
+		
 		// Recuperation du type de selection des articles transmis par l'activite appelante
 		selection = this.getIntent().getStringExtra("cle");
 
@@ -78,25 +77,15 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		textViewMessageArticleList.setText("Article par " + selection);
 
 		
-		// Liaison avec le bouton de retour
-		//buttonRetourArticleListe = (Button) findViewById(R.id.buttonRetourArticleListe);
-		// Rattachement du bouton au listener
-		//buttonRetourArticleListe.setOnClickListener(this);
-
-		
 		// Liaison avec la liste deroulante
 		spinnerListeSelection = (Spinner) findViewById(R.id.spinnerListeSelection);
 		// Rattachement au listener
 		spinnerListeSelection.setOnItemSelectedListener(this);
-				
-		// Instanciation du contexte
-		contexte = this.getBaseContext();
-		
+
 	}
 
 	@Override
 	public void onClick(View vue) {		
-		
 	}
 	
 
@@ -140,26 +129,15 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Parametre non prevu
 			nomFichier = "";
 		}
-
-		
-		
+		// Recuperation des donnees relatives au domaine choisi
 		if(selection.equals("Paru ce jour")){
 			listFichier.add(selection);
 		}else if (nomFichier.equals("")) {
 			// Le parametre n'est pas associe a un fichier
 			textViewMessageArticleList.setText("Choix erroné");
 		}else {
-			// Verification de l'existence du fichier
-			//File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
-
-			// Controle de l'association avec un non de fichier
-			//if (nomFichier.equals("")) {
-				// Le parametre n'est pas associe a un fichier
-			//	textViewMessageArticleList.setText("Choix erroné");
-			//}else{
 				// Verification de l'existence du fichier
 				File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
-
 			if (f.exists()) {
 				// Recuperation des valeurs dans le fichier
 				try {
@@ -298,11 +276,14 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 	} // / TacheAsynchrone
 
 	public void onListItemClick(ListView parent, View v, int position, long id) {
+		
 		// Recuperation de l'élément sélectionner
 		Map<String,String> unArticle = (HashMap<String, String>) parent.getAdapter().getItem(position);
 		
+		Log.i(TAG_APPLI, "Article : " + unArticle.get("id_article"));
+		
 		// Declaration d'une intention
-		Intent intentionArticle = new Intent();
+		Intent intentionArticle = new Intent(contexte,UnArticle.class);
 		// Affectation de l'id de l'article
 		intentionArticle.putExtra("idArticle", unArticle.get("id_article"));
 		// Appel de l'intention
