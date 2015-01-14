@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!-- 	Menu principal -->    
+    <string-array name="menu_principal">
+        <item >Paramètrages</item>
+        <item>Journalistes</item>
+        <item>Articles</item>
+        <item >Images</item>
+    </string-array> 
+    
+<!--
     <string-array name="menu_principal">
         <item >Statuts</item>
         <item>Catégories</item>
@@ -12,7 +21,32 @@
         <item>Test DAO</item>
         <item>Villes SQLite</item>
     </string-array> 
+-->    
+
+<!-- 	Menu PARAMETRAGE	 -->
+    <string-array name="menu_parametrage">
+        <item >Statuts</item>
+        <item>Catégories</item>
+        <item>Civilité</item>
+        <item>Rubriques</item>
+        <item>Mots clé</item>
+        </string-array> 
+        
+<!-- 	Menu JOURNALISTE	 -->
+    <string-array name="menu_journaliste">
+        <item >Modifier/Suprimer/Ajouter</item>
+        </string-array> 
+
+<!-- 	Menu ARTICLE	 -->    
+    <string-array name="menu_article">
+        <item >Ajouter</item>
+        <item >Modifier</item>
+        <item >Supprimer</item>
+        <item >Valider</item>
+        <item >Consulter</item>
+        </string-array> 
     
+<!--   Liste de parametres de recherhce d'article -->    
     <string-array name="rech_article">
         <item>Catégories</item>
         <item>Mots clés</item>

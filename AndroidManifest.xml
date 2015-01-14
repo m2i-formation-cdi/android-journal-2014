@@ -9,12 +9,14 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera"
-                  android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo_crieur"
         android:label="@string/app_name" >
         <activity
             android:name="fr.m2i.journal2014.Login"
@@ -69,8 +71,19 @@
             android:name="fr.m2i.journal2014.ArticleListe"
             android:label="@string/title_activity_article_liste" >
         </activity>
+        <activity android:name="fr.m2i.journal2014.UnArticle" >
+        </activity>
         <activity
-            android:name="fr.m2i.journal2014.UnArticle" >
+            android:name="fr.m2i.journal2014.MenuParametrage"
+            android:label="@string/title_activity_parametrage" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.MenuJournaliste"
+            android:label="@string/title_activity_menu_journaliste" >
+        </activity>
+        <activity
+            android:name="fr.m2i.journal2014.MenuArticle"
+            android:label="@string/title_activity_menu_article" >
         </activity>
     </application>
 

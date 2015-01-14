@@ -100,15 +100,17 @@
     <string name="title_activity_rech_article">RechArticle</string>
     <string name="title_activity_article_liste">ArticleListe</string>
 
-	<!--  ARTICLE LISTE -->
+    <!-- ARTICLE LISTE -->
     <string name="labelBoutonRetour">Retour</string>
-	<string name="defaultAffichage">Message&#8230;</string>
-	<string name="defaultTitreArticle">Titre article</string>
-	<string name="defaultDateParution">25/12/2014</string>
-	<string name="defaultChapeau">Chapeau article</string>
-	
-	<!-- UN ARTICLE -->
+    <string name="defaultAffichage">Message&#8230;</string>
+    <string name="defaultTitreArticle">Titre article</string>
+    <string name="defaultDateParution">25/12/2014</string>
+    <string name="defaultChapeau">Chapeau article</string>
+
+    <!-- UN ARTICLE -->
     <string name="par">PAR</string>
-	
+    <string name="title_activity_parametrage">Parametrage</string>
+    <string name="title_activity_menu_journaliste">MenuJournaliste</string>
+    <string name="title_activity_menu_article">MenuArticle</string>
 
 </resources>

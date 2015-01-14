@@ -3,12 +3,11 @@ package fr.m2i.journal2014;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 public class MenuPrincipal extends ListActivity {
-
-	private Intent intentionNavigation;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +17,29 @@ public class MenuPrincipal extends ListActivity {
 	
 	@Override
 	public void onListItemClick(ListView parent, View v, int position, long id) {
+		Intent intentionNavigation = null;
+	    switch(position){
+	    case 0:
+	    	// Parametrage de l'application
+	    	intentionNavigation = new Intent(this,MenuParametrage.class);
+	    	break;	
+	    case 1:
+	    	// Gestion des journaliste
+	    	intentionNavigation = new Intent(this,MenuJournaliste.class);
+	    	break;
+	    case 2:
+	    	// Gestion des articles
+	    	intentionNavigation = new Intent(this,MenuArticle.class);
+	    	break;
+	    case 3:
+	    	// Gestion des images
+//	    	intentionNavigation = new Intent(this,Rubrique.class);
+	    	break;
+	    }
+		
+		
+/*		Sauvegarde de l'existant
+ * 
 	    switch(position){
 	    case 0:
 	    	intentionNavigation = new Intent(this,Statut.class);
@@ -46,8 +68,9 @@ public class MenuPrincipal extends ListActivity {
 	    	break;
 	    
 	    }
-	    
-	    
-	    startActivity(intentionNavigation);
+*/	    
+	    if( intentionNavigation != null ){
+	    	startActivity(intentionNavigation);
+	    }
 	} 
 }
