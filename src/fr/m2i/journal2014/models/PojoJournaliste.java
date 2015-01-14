@@ -15,7 +15,7 @@ public class PojoJournaliste {
 	private int offresPartenaires;
 	private Calendar dateInscriptionContributeur;
 	private int idStatut;
-	private String cvContributeur;
+	private String cvContributeur = "";
 	
 	/****************************************
 	 * Constructeur sans arguments
@@ -23,107 +23,110 @@ public class PojoJournaliste {
 	public PojoJournaliste() {
 		super();
 	}
-	
+
 	/****************************************
 	 * GETTERS AND SETTERS
 	 ****************************************/
-
+	
 	public int getIdContributeur() {
 		return idContributeur;
 	}
 
-	public void setIdContributeur(int id_contributeur) {
-		this.idContributeur = id_contributeur;
+	public void setIdContributeur(int idContributeur) {
+		this.idContributeur = idContributeur;
 	}
 
 	public String getPseudoContributeur() {
 		return pseudoContributeur;
 	}
 
-	public void setPseudoContributeur(String pseudo_contributeur) {
-		this.pseudoContributeur = pseudo_contributeur;
+	public void setPseudoContributeur(String pseudoContributeur) {
+		this.pseudoContributeur = pseudoContributeur;
 	}
 
 	public String getEmailContributeur() {
 		return emailContributeur;
 	}
 
-	public void setEmailContributeur(String email_contributeur) {
-		this.emailContributeur = email_contributeur;
+	public void setEmailContributeur(String emailContributeur) {
+		this.emailContributeur = emailContributeur;
 	}
 
 	public String getMdpContributeur() {
 		return mdpContributeur;
 	}
 
-	public void setMdpContributeur(String mdp_contributeur) {
-		this.mdpContributeur = mdp_contributeur;
+	public void setMdpContributeur(String mdpContributeur) {
+		this.mdpContributeur = mdpContributeur;
 	}
 
 	public char getCiviliteContributeur() {
 		return civiliteContributeur;
 	}
 
-	public void setCiviliteContributeur(char civilite_contributeur) {
-		this.civiliteContributeur = civilite_contributeur;
+	public void setCiviliteContributeur(char civiliteContributeur) {
+		this.civiliteContributeur = civiliteContributeur;
 	}
 
 	public String getNomContributeur() {
 		return nomContributeur;
 	}
 
-	public void setNomContributeur(String nom_contributeur) {
-		this.nomContributeur = nom_contributeur;
+	public void setNomContributeur(String nomContributeur) {
+		this.nomContributeur = nomContributeur;
 	}
 
 	public String getPrenomContributeur() {
 		return prenomContributeur;
 	}
 
-	public void setPrenomContributeur(String prenom_contributeur) {
-		this.prenomContributeur = prenom_contributeur;
+	public void setPrenomContributeur(String prenomContributeur) {
+		this.prenomContributeur = prenomContributeur;
 	}
 
 	public String getPhotoContributeur() {
 		return photoContributeur;
 	}
 
-	public void setPhotoContributeur(String photo_contributeur) {
-		this.photoContributeur = photo_contributeur;
+	public void setPhotoContributeur(String photoContributeur) {
+		this.photoContributeur = photoContributeur;
 	}
 
 	public int getOffresPartenaires() {
 		return offresPartenaires;
 	}
 
-	public void setOffresPartenaires(int offres_partenaires) {
-		this.offresPartenaires = offres_partenaires;
+	public void setOffresPartenaires(int offresPartenaires) {
+		this.offresPartenaires = offresPartenaires;
 	}
 
-	public Calendar getDate_inscription_contributeur() {
+	public Calendar getDateInscriptionContributeur() {
 		return dateInscriptionContributeur;
 	}
 
-	public void setDate_inscription_contributeur(
-			Calendar date_inscription_contributeur) {
-		this.dateInscriptionContributeur = date_inscription_contributeur;
+	public void setDateInscriptionContributeur(Calendar dateInscriptionContributeur) {
+		this.dateInscriptionContributeur = dateInscriptionContributeur;
 	}
 
-	public int getId_statut() {
+	public int getIdStatut() {
 		return idStatut;
 	}
 
-	public void setId_statut(int id_statut) {
-		this.idStatut = id_statut;
+	public void setIdStatut(int idStatut) {
+		this.idStatut = idStatut;
 	}
 
-	public String getCv_contributeur() {
+	public String getCvContributeur() {
 		return cvContributeur;
 	}
 
-	public void setCv_contributeur(String cv_contributeur) {
-		this.cvContributeur = cv_contributeur;
+	public void setCvContributeur(String cvContributeur) {
+		this.cvContributeur = cvContributeur;
 	}
+	
+	
+
+	
 	
 	
 	

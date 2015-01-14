@@ -15,6 +15,7 @@ public class DbConnexion {
 		Connection cn;
 		Class.forName("com.mysql.jdbc.Driver");
 		cn = DriverManager.getConnection(dbHost, dbUser, dbPass);
+		cn.setAutoCommit(true);
 		return cn;
 	}
 }

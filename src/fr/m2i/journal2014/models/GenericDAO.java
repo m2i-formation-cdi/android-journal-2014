@@ -18,6 +18,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TreeMap;
 
+import android.util.Log;
+
 /**
  *
  * @author seb
@@ -163,10 +165,10 @@ public class GenericDAO implements IDAO<Object>{
         switch (intReturnType) {
             case 1:
                 Object getterValue =  getterMethod.invoke(pojo);
-                int intGetterValue = Integer.valueOf(getterValue.toString());
-                if (intGetterValue == 0) {
-                    returnValue = "null";
+                if(getterValue.toString().equals("") || getterValue.toString() == null){
+                	returnValue = "null";                     
                 } else {
+                	int intGetterValue = Integer.valueOf(getterValue.toString());
                     returnValue = String.valueOf(intGetterValue);
                 }
                 break;
@@ -474,20 +476,26 @@ public class GenericDAO implements IDAO<Object>{
         int affectedRows = -1;
         Map<String, String> dbFieldsMap = this.pojoToMap(pojo);
 
-        //Constittion de la chaîne sql
+        //Constitution de la chaîne sql
         String sql;
         StringBuilder sb = new StringBuilder();
         sb.append("UPDATE ");
         sb.append(this.tableName);
         sb.append(" SET ");
+        
+        int placeholderIndex = 1;
         //Boucle pour constituer la chaine des noms de colonne et des valeurs
         for (Map.Entry<String, String> entrySet : dbFieldsMap.entrySet()) {
             String fieldName = entrySet.getKey();
             String value = entrySet.getValue();
+            
             if (!value.equals("") && !(value.equals("null")) && !fieldName.equals(this.pkName)) {
                 sb.append(fieldName);
                 sb.append("=");
                 sb.append("?,");
+                
+                Log.i("Update method","placeholder " + placeholderIndex + " " + fieldName + "=" + value);
+                placeholderIndex++;
             }
         }
         sb.deleteCharAt(sb.length() - 1);
@@ -560,9 +568,11 @@ public class GenericDAO implements IDAO<Object>{
         for (Map.Entry<String, String> entrySet : dbFieldMap.entrySet()) {
             String key = entrySet.getKey();
             String value = entrySet.getValue();
-            if (!value.equals("") && !(value.equals("null"))) {
+            if (!value.equals("") && !(value.equals("null")) && ! key.equals(pkName)) {
                 pStatement.setString(paramIndex, value);
+                Log.i("getStatement", "prepared statement param " + paramIndex + " " + key + " = " + value );
                 paramIndex++;
+                
             }
         }
         return pStatement;
@@ -584,11 +594,29 @@ public class GenericDAO implements IDAO<Object>{
         //Récupération du nombre de paramètres du Statement
         ParameterMetaData pStatementData = pStatement.getParameterMetaData();
         int paramIndex = pStatementData.getParameterCount();
-        paramIndex++;
+        
+        Log.i("getStatementForUpdate", "prepared statement parameter count = " + paramIndex);
+        
+        listParameters(pStatement);
+        
+        //paramIndex++;
         //Passage de la clef primaire en dernier paramètre
         pStatement.setString(paramIndex, dbFieldMap.get(this.pkName));
-
         return pStatement;
+    }
+    
+    private void listParameters(PreparedStatement pStatement){
+    	try {
+    		ParameterMetaData param = pStatement.getParameterMetaData();
+			int max = param.getParameterCount();
+			for (int i = 0; i < max; i++) {
+				Log.i("Parameters list", param.getParameterClassName(i));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     }
 
     public static void main(String[] args) {

@@ -162,4 +162,10 @@ public class Journalistes extends ListActivity implements OnClickListener {
 			startActivityForResult(intentionFormulaire, 1);
 		}
 	}
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		//Remplissage de la liste des journalistes depuis un tâche asynchrone
+		TacheAsynchrone asyncTask = new TacheAsynchrone();
+		asyncTask.execute("");	
+	}
 }

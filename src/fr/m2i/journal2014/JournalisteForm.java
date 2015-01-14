@@ -20,8 +20,10 @@ import fr.m2i.journal2014.models.GenericDAO;
 import fr.m2i.journal2014.models.PojoJournaliste;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,6 +63,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 	private Button btValid;
 	private Button btDelete;
 	private Button btCancel;
+	private Button btCapture;
 
 	private ArrayAdapter<String> arrayAdapterStatut;
 
@@ -103,6 +106,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		btValid = (Button) findViewById(R.id.buttonJrFormValid);
 		btCancel = (Button) findViewById(R.id.buttonJrFormCancel);
 		btDelete = (Button) findViewById(R.id.buttonJrFormDelete);
+		btCapture = (Button) findViewById(R.id.buttonJrFormPhoto);
 
 		radioMadame = (RadioButton) findViewById(R.id.radioJournalisteMadame);
 		radioMonsieur = (RadioButton) findViewById(R.id.radioJournalisteMonsieur);
@@ -125,6 +129,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		btCancel.setOnClickListener(this);
 		btDelete.setOnClickListener(this);
 		btValid.setOnClickListener(this);
+		btCapture.setOnClickListener(this);
 
 		spinnerStatut.setOnItemSelectedListener(this);
 
@@ -195,10 +200,10 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 
 		if (v == editDateInscription && hasFocus) {
 			Calendar dh;
-			if (pojo.getDate_inscription_contributeur() == null) {
+			if (pojo.getDateInscriptionContributeur() == null) {
 				dh = Calendar.getInstance();
 			} else {
-				dh = pojo.getDate_inscription_contributeur();
+				dh = pojo.getDateInscriptionContributeur();
 			}
 
 			DatePickerDialog dpd = new DatePickerDialog(this,
@@ -230,14 +235,14 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		}
 
 		String statut = this
-				.getStatutFromId(String.valueOf(pojo.getId_statut()));
+				.getStatutFromId(String.valueOf(pojo.getIdStatut()));
 		this.setSelectedStatut(statut);
 
 		Calendar dh;
-		if (pojo.getDate_inscription_contributeur() == null) {
+		if (pojo.getDateInscriptionContributeur() == null) {
 			dh = Calendar.getInstance();
 		} else {
-			dh = pojo.getDate_inscription_contributeur();
+			dh = pojo.getDateInscriptionContributeur();
 		}
 		DateFormat fmtDate = DateFormat.getDateInstance(DateFormat.LONG,
 				Locale.FRANCE);
@@ -277,7 +282,6 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 						.toString());
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return idStatut;
@@ -292,11 +296,14 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 	 *******************************************************************************/
 	private class AsyncLoadFromDataBase extends
 			AsyncTask<String, Integer, Map<String, String>> {
+
+		private Connection cn;
+
 		@Override
 		protected Map<String, String> doInBackground(String... params) {
 			Map<String, String> resultSet = new HashMap<String, String>();
 			try {
-				Connection cn = DbConnexion.connect();
+				cn = DbConnexion.connect();
 				GenericDAO dao = new GenericDAO("contributeur", cn);
 				PojoJournaliste pojo = new PojoJournaliste();
 				pojo.setIdContributeur(Integer.valueOf(pk));
@@ -311,6 +318,11 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		 * 
 		 */
 		protected void onPostExecute(Map<String, String> record) {
+			try {
+				cn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			mapToPojo(record);
 			populateForm();
 
@@ -323,7 +335,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 					.get("id_contributeur").toString()));
 			pojo.setCiviliteContributeur(record.get("civilite_contributeur")
 					.toString().charAt(0));
-			pojo.setCv_contributeur(record.get("cv_contributeur").toString());
+			pojo.setCvContributeur(record.get("cv_contributeur").toString());
 			pojo.setEmailContributeur(record.get("email_contributeur")
 					.toString());
 			pojo.setIdContributeur(Integer.valueOf(record
@@ -338,8 +350,8 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 					.toString());
 			pojo.setPseudoContributeur(record.get("pseudo_contributeur")
 					.toString());
-			pojo.setId_statut(Integer.valueOf(record.get("id_statut")
-					.toString()));
+			pojo.setIdStatut(Integer
+					.valueOf(record.get("id_statut").toString()));
 			Calendar dateInscription = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
 					Locale.FRANCE);
@@ -349,7 +361,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			pojo.setDate_inscription_contributeur(dateInscription);
+			pojo.setDateInscriptionContributeur(dateInscription);
 		}
 
 		private Map<String, String> nullToEmptyString(Map<String, String> record) {
@@ -361,49 +373,57 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 			}
 			return record;
 		}
-	}/// AsyncLoadFromDatabase
+	}// / AsyncLoadFromDatabase
+
 	/************************************************************************************
 	 * 
 	 * @author seb
 	 *
 	 ************************************************************************************/
-	private class AsyncPersistInDataBase extends AsyncTask <String, Integer, String > {
+	private class AsyncPersistInDataBase extends
+			AsyncTask<String, Integer, String> {
+
+		private Connection cn;
 
 		@Override
 		protected String doInBackground(String... params) {
-			Connection cn;
 			String message = "";
 			try {
 				cn = DbConnexion.connect();
 				GenericDAO dao = new GenericDAO("contributeur", cn);
-				if(params[0].equals("DELETE")){
+				if (params[0].equals("Delete")) {
 					dao.delete(pojo);
 					message = "Votre enregistrement a été supprimé";
-				} else if(isNew){
+				} else if (isNew) {
 					dao.insert(pojo);
-					cn.commit();
+					//cn.commit();
 					message = "Votre enregistrement a été sauvegardé";
 				} else {
 					dao.update(pojo);
-					cn.commit();
+					//cn.commit();
 					message = "Votre enregistrement a été modifié";
 				}
 			} catch (Exception e) {
 				message = "Une erreur empêche l'exécution de votre commande";
 				e.printStackTrace();
 			}
-			
+
 			return message;
 		}
-		
+
 		protected void onPostExecute(String message) {
-			Toast msgToats = new Toast(getBaseContext());
-			Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG);
-			msgToats.show();
+
+			try {
+				cn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG)
+					.show();
 
 		} // / onPostExecute
-		
-	}/// AsyncPersistInDataBase
+
+	}// / AsyncPersistInDataBase
 
 	@Override
 	public void onClick(View v) {
@@ -413,26 +433,36 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		}
 
 		if (v == btValid) {
-			if(this.validateForm()){
+			if (this.validateForm()) {
 				this.formToPojo();
 				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
 				persistTask.execute("AddEdit");
 			}
-			
+
 		}
 
 		if (v == btDelete) {
-			if(! isNew){
+			if (!isNew) {
 				this.formToPojo();
 				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
 				persistTask.execute("Delete");
 			} else {
 				String message = "Vous ne pouvez pas supprimer un nouvel enregistrement";
-				Toast msgToats = new Toast(getBaseContext());
-				Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG);
-				msgToats.show();
+
+				Toast.makeText(getApplicationContext(), message,
+						Toast.LENGTH_LONG).show();
+
 			}
 		}
+		
+		if(v==btCapture){
+			Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+		        startActivityForResult(takePictureIntent, 1);
+		    }
+		}
+		
+		
 
 		finish();
 
@@ -449,7 +479,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		String statut = spinnerStatut.getSelectedItem().toString();
 		int idStatut = getIdFromStatut(statut);
 
-		pojo.setId_statut(idStatut);
+		pojo.setIdStatut(idStatut);
 		pojo.setCiviliteContributeur(civ);
 		pojo.setNomContributeur(editTextNom.getText().toString());
 		pojo.setEmailContributeur(editTextEmail.getText().toString());
@@ -461,16 +491,20 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 			pojo.setIdContributeur(Integer.valueOf(pk));
 		}
 
-		if(checkBoxOffrePartenaire.isChecked()){
+		if (checkBoxOffrePartenaire.isChecked()) {
 			pojo.setOffresPartenaires(1);
+		}else {
+			pojo.setOffresPartenaires(0);
 		}
-		
+
 		String inutDateInscription = editDateInscription.getText().toString();
 		if (!inutDateInscription.equals("")) {
 			try {
 				Calendar dateInscription = Calendar.getInstance();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+				SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy",
+						Locale.FRANCE);
 				dateInscription.setTime(sdf.parse(inutDateInscription));
+				pojo.setDateInscriptionContributeur(dateInscription);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -491,7 +525,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		if (view == spinnerStatut) {
 			String statut = parent.getSelectedItem().toString();
 			int idStatut = getIdFromStatut(statut);
-			pojo.setId_statut(idStatut);
+			pojo.setIdStatut(idStatut);
 		}
 
 	}

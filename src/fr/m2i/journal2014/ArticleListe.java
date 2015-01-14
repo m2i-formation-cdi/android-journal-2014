@@ -81,6 +81,14 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		textViewMessageArticleList = (TextView) findViewById(R.id.textViewMessageArticleList);
 		// Information sur le type de selection des articles
 		textViewMessageArticleList.setText("Article par " + selection);
+<<<<<<< Upstream, based on branch 'master' of https://github.com/m2i-formation-cdi/android-journal-2014.git
+=======
+		
+		// Liaison avec le bouton de retour
+		//buttonRetourArticleListe = (Button) findViewById(R.id.buttonRetourArticleListe);
+		// Rattachement du bouton au listener
+		//buttonRetourArticleListe.setOnClickListener(this);
+>>>>>>> e71ebcd JournalisteForm CRUD et photo
 		
 		// Liaison avec la liste deroulante
 		spinnerListeSelection = (Spinner) findViewById(R.id.spinnerListeSelection);
@@ -136,10 +144,10 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 		if (selection.equals("Rubriques")) {
 			// Recherche par rubrique
 			nomFichier = "rubrique.txt";
-		}else if (selection.equals("Mots clés")) {
+		}else if (selection.equals("Mots clÃ©s")) {
 			// Recherche par mot cle
 			nomFichier = "mot_cle.txt";
-		}else if (selection.equals("Catégories")) {
+		}else if (selection.equals("CatÃ©gories")) {
 			// Recherche par categorie
 			nomFichier = "categorie.txt";
 		}else{
@@ -149,7 +157,7 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Controle de l'association avec un non de fichier
 			if (nomFichier.equals("")) {
 				// Le parametre n'est pas associe a un fichier
-				textViewMessageArticleList.setText("Choix erroné");
+				textViewMessageArticleList.setText("Choix erronÃ©");
 			}else{
 				// Verification de l'existence du fichier
 				File f = new File(getBaseContext().getFilesDir().getAbsolutePath() + File.separator + nomFichier);
@@ -216,9 +224,9 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Determination de la condition de filtrage supplementaire
 			if( selection.equals("Rubriques") ){
 				monWhere = "AND ru.rubrique='" + monFiltre + "'";
-			}else if( selection.equals("Mots clés") ){
+			}else if( selection.equals("Mots clÃ©s") ){
 				monWhere = "AND mc.mot_cle='" + monFiltre + "'";
-			}else if( selection.equals("Catégories") ){
+			}else if( selection.equals("CatÃ©gories") ){
 				monWhere = "AND cat.categorie='" + monFiltre + "'";
 			}else{
 				monWhere = "AND ar.id_rubrique=-1";
@@ -265,10 +273,10 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			ListView liste = getListView();
 	        SimpleAdapter sa = new SimpleAdapter (
 	                contexte,
-	                maListe, // nom du map associé definissant la source
+	                maListe, // nom du map associï¿½ definissant la source
 	                R.layout.article_detail,
-	                new String[] {"id_article", "titre_article", "date_parution_article", "chapeau_article"}, // clé du map source
-	                new int[] {R.id.textViewIdArticle, R.id.textViewTitreArticleCategorieDetail, R.id.textViewDateParutionArticleCategorieDetail, R.id.textViewChapeauArticleCategorieDetail} // Référence du champ dans le layout secondaire
+	                new String[] {"id_article", "titre_article", "date_parution_article", "chapeau_article"}, // clï¿½ du map source
+	                new int[] {R.id.textViewIdArticle, R.id.textViewTitreArticleCategorieDetail, R.id.textViewDateParutionArticleCategorieDetail, R.id.textViewChapeauArticleCategorieDetail} // Rï¿½fï¿½rence du champ dans le layout secondaire
 	            );
 
 	            // -- Attribue a la listView l'adaptateur

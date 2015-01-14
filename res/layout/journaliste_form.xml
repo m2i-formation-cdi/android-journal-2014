@@ -80,7 +80,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="Fabrice" >
+
             </EditText>
         </LinearLayout>
 
@@ -99,7 +101,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="Arfi" >
+
             </EditText>
         </LinearLayout>
 
@@ -118,7 +122,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="fab-arfi@mediapart.com" >
+
             </EditText>
         </LinearLayout>
 
@@ -137,7 +143,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="fab-arfi@mediapart.com" >
+
             </EditText>
         </LinearLayout>
 
@@ -156,7 +164,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="fab-arfi" >
+
             </EditText>
         </LinearLayout>
 
@@ -175,7 +185,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="charlie" >
+
             </EditText>
         </LinearLayout>
 
@@ -194,7 +206,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
-                android:ems="10" >
+                android:ems="10"
+                android:text="charlie" >
+
             </EditText>
         </LinearLayout>
 
@@ -255,6 +269,13 @@
                 android:layout_weight="70"
                 android:ems="10" >
             </EditText>
+            
+            <Button
+                android:id="@+id/buttonJrFormPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="capture" />
+            
         </LinearLayout>
 
         <LinearLayout
