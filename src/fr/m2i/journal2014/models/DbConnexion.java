@@ -21,11 +21,11 @@ public class DbConnexion {
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		PropertyReader propReader = new PropertyReader(context);
-		Properties p = propReader.getProperties("param.properties");
+		Properties p = propReader.getProperties("params.properties");
 		
 		String dbHost = p.getProperty("DbProtocol");
 		dbHost += p.getProperty("DbIP") + ":" + p.getProperty("DbPort");
-		dbHost += "/" + p.getProperty("BdName");
+		dbHost += "/" + p.getProperty("DbName");
 		
 		String dbUser = p.getProperty("DbUser");
 		String dbPass = p.getProperty("DbPass");
