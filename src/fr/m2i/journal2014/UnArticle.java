@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.m2i.journal2014.models.DbConnexion;
+
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,6 +49,17 @@ public class UnArticle extends Activity {
 		textViewNomRubrique = (TextView) findViewById(R.id.textViewNomRubrique);
 		textViewCategorieArticle = (TextView) findViewById(R.id.textViewCategorieArticle);
 		textViewMotsClesArticle = (TextView) findViewById(R.id.textViewMotsClesArticle);
+		
+		textViewTitreArticle.setText("");
+		textViewDateParutionArticle.setText("");
+		textViewContributeurArticle.setText("");
+		textViewChapoArticle.setText("");
+		textViewResumeArticle.setText("");
+		textViewTexteArticle.setText("");
+		textViewNomRubrique.setText("");
+		textViewCategorieArticle.setText("");
+		textViewMotsClesArticle.setText("");
+		
 		
 		// récupération de l'identifiant de l'article depuis les autres activités.
 		Bundle extras = getIntent().getExtras();
@@ -96,28 +109,28 @@ public class UnArticle extends Activity {
 		// ----------------------------
 		protected List<ResultSet> doInBackground(String... parametre) {
 
-			// Instantiation du StringBuilder lsbResultat pour l'affichage d'éventuel erreur
-			StringBuilder lsbResultat = new StringBuilder();
-			// L'adresse IP du serveur
-			String lsIP = "172.26.10.54";
-			// Le port du serveur
-			String lsPort = "3306";
-			// Le nom de la base de données
-			String lsBD = "journal2014";
-			// Le login utilisateur pour la base de donées
-			String lsUSER = "p";
-			// Le mot de passe de l'utilisateur pour la base de donées
-			String lsMDP = "b";
+//			// Instantiation du StringBuilder lsbResultat pour l'affichage d'éventuel erreur
+//			StringBuilder lsbResultat = new StringBuilder();
+//			// L'adresse IP du serveur
+//			String lsIP = "172.26.10.54";
+//			// Le port du serveur
+//			String lsPort = "3306";
+//			// Le nom de la base de données
+//			String lsBD = "journal2014";
+//			// Le login utilisateur pour la base de donées
+//			String lsUSER = "p";
+//			// Le mot de passe de l'utilisateur pour la base de donées
+//			String lsMDP = "b";
 
 			
 			// Connection à la base de données
 			// préparation et exécution des requêtes
 			// stockage des résultats dans la liste
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				lcCnx = DriverManager.getConnection("jdbc:mysql://" + lsIP
-						+ ":" + lsPort + "/" + lsBD, lsUSER, lsMDP);
-
+//				Class.forName("com.mysql.jdbc.Driver");
+//				lcCnx = DriverManager.getConnection("jdbc:mysql://" + lsIP
+//						+ ":" + lsPort + "/" + lsBD, lsUSER, lsMDP);
+				lcCnx = DbConnexion.connect(getBaseContext());
 
 				/**
 				 * Sélection de l'article
