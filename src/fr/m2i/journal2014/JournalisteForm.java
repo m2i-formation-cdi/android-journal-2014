@@ -74,6 +74,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 	private DatePickerDialog.OnDateSetListener datePickerDialogListener;
 
 	private String validationErrors;
+	static final int REQUEST_IMAGE_CAPTURE = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -429,7 +430,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 	public void onClick(View v) {
 
 		if (v == btCancel) {
-
+			finish();
 		}
 
 		if (v == btValid) {
@@ -438,7 +439,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
 				persistTask.execute("AddEdit");
 			}
-
+			finish();
 		}
 
 		if (v == btDelete) {
@@ -453,19 +454,24 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 						Toast.LENGTH_LONG).show();
 
 			}
+			finish();
 		}
 		
 		if(v==btCapture){
 			Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-		        startActivityForResult(takePictureIntent, 1);
+		        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
 		    }
 		}
-		
-		
-
-		finish();
-
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+	        Bundle extras = data.getExtras();
+	        //Bitmap imageBitmap = (Bitmap) extras.get("data");
+	        //mImageView.setImageBitmap(imageBitmap);
+	    }
 	}
 
 	private void formToPojo() {
