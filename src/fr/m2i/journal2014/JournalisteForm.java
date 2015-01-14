@@ -438,8 +438,11 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 				this.formToPojo();
 				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
 				persistTask.execute("AddEdit");
+				finish();
+			} else {
+				Toast.makeText(getApplicationContext(), validationErrors, Toast.LENGTH_LONG).show();
 			}
-			finish();
+			
 		}
 
 		if (v == btDelete) {
@@ -447,6 +450,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 				this.formToPojo();
 				AsyncPersistInDataBase persistTask = new AsyncPersistInDataBase();
 				persistTask.execute("Delete");
+				finish();
 			} else {
 				String message = "Vous ne pouvez pas supprimer un nouvel enregistrement";
 
@@ -454,7 +458,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 						Toast.LENGTH_LONG).show();
 
 			}
-			finish();
+			
 		}
 		
 		if(v==btCapture){
@@ -520,7 +524,30 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 
 	private boolean validateForm() {
 		boolean isValid = true;
+		StringBuilder sb = new StringBuilder();
 
+		
+		if(editTextPseudo.getText().toString().equals("")){
+			isValid = false;
+			sb.append("Le pseudo est requis\n");
+		}
+		
+		if(! editTextEmail.getText().toString().equals(editTextEmailConfirm.getText().toString())){
+			isValid = false;
+			sb.append("L'adresse e-mail et sa confirmation sont différentes\n");
+		}
+		
+		if(! editTextMotDePasse.getText().toString().equals(editTextMotDePasseConfirm.getText().toString())){
+			isValid = false;
+			sb.append("Le mot de passe et sa confirmation sont requis\n");
+		}
+		
+		if(editDateInscription.getText().toString().equals("")){
+			isValid = false;
+			sb.append("La date d'inscription est requise\n");
+		}
+		
+		this.validationErrors = sb.toString();
 		return isValid;
 
 	}
