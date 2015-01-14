@@ -19,7 +19,9 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:text="@string/defaultTitreArticle"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewDateParutionArticleCategorieDetail"
@@ -28,7 +30,8 @@
         android:paddingRight="5dp"
         android:layout_height="wrap_content"
         android:text="@string/defaultDateParution"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/textViewChapeauArticleCategorieDetail"
