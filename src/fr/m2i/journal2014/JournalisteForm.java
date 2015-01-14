@@ -304,7 +304,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		protected Map<String, String> doInBackground(String... params) {
 			Map<String, String> resultSet = new HashMap<String, String>();
 			try {
-				cn = DbConnexion.connect();
+				cn = DbConnexion.connect(getBaseContext());
 				GenericDAO dao = new GenericDAO("contributeur", cn);
 				PojoJournaliste pojo = new PojoJournaliste();
 				pojo.setIdContributeur(Integer.valueOf(pk));
@@ -390,7 +390,7 @@ public class JournalisteForm extends Activity implements OnFocusChangeListener,
 		protected String doInBackground(String... params) {
 			String message = "";
 			try {
-				cn = DbConnexion.connect();
+				cn = DbConnexion.connect(getBaseContext());
 				GenericDAO dao = new GenericDAO("contributeur", cn);
 				if (params[0].equals("Delete")) {
 					dao.delete(pojo);

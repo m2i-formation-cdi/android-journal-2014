@@ -227,7 +227,7 @@ public class ArticleListe extends ListActivity implements OnClickListener, OnIte
 			// Recuperation de la liste des articles
  			try {
  				// Instanciation de la connexion
- 				connectDb = DbConnexion.connect();
+ 				connectDb = DbConnexion.connect(getBaseContext());
  				// Instanciation du statement
  				st = connectDb.createStatement();
  				// Execution de la requete et ouverture du curseur

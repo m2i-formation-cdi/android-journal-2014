@@ -88,7 +88,7 @@ public class Journalistes extends ListActivity implements OnClickListener {
 		protected List<Map<String, String>> doInBackground(String... params) {
 			List<Map<String, String>> resultSet = new ArrayList<Map<String,String>>();
 			try {
-				Connection cn = DbConnexion.connect();
+				Connection cn = DbConnexion.connect(getBaseContext());
 				GenericDAO dao = new GenericDAO("contributeur", cn);
 				resultSet = dao.selectAll();
 			} catch (Exception e) {
