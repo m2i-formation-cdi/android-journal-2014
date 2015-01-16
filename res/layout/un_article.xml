@@ -59,7 +59,7 @@
             android:id="@+id/textViewChapoArticle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chapô"
+            android:text="Châpo"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="20sp" />
 
