@@ -26,11 +26,11 @@ public class MenuParametrage extends ListActivity {
 	    switch(position){
 	    case 0:
 	    	// Gestion des statuts
-//	    	intentionNavigation = new Intent(this,Parametrage.class);
+	    	intentionNavigation = new Intent(this,Statut.class);
 	    	break;	
 	    case 1:
 	    	// Gestion des categories
-//	    	intentionNavigation = new Intent(this,Journalistes.class);
+	    	intentionNavigation = new Intent(this,Categorie.class);
 	    	break;
 	    case 2:
 	    	// civilités
@@ -38,11 +38,14 @@ public class MenuParametrage extends ListActivity {
 	    	break;
 	    case 3:
 	    	// Gestion des rubriques
-//	    	intentionNavigation = new Intent(this,Categorie.class);
+//	    	intentionNavigation = new Intent(this,Rubrique.class);
+	    	/*
+	    	 * Classe rubrique a revoir
+	    	 */
 	    	break;
 	    case 4:
 	    	// Gestion des mots cl
-//	    	intentionNavigation = new Intent(this,Categorie.class);
+	    	intentionNavigation = new Intent(this,MotCle.class);
 	    	break;
 	    }
 	    // Lancement de l'intention si definie
