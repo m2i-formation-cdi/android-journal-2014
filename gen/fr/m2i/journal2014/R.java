@@ -9,8 +9,35 @@ package fr.m2i.journal2014;
 
 public final class R {
     public static final class array {
+        /**  	Menu ARTICLE	 
+         */
+        public static final int menu_article=0x7f060003;
+        /**  	Menu JOURNALISTE	 
+         */
+        public static final int menu_journaliste=0x7f060002;
+        /** 
+    <string-array name="menu_principal">
+        <item >Statuts</item>
+        <item>Catégories</item>
+        <item>Civilités</item>
+        <item >Rubriques</item>
+        <item>Mots clé</item>
+        <item>Images</item>
+        <item >Journalistes</item>
+        <item>Articles</item>
+        <item>Test DAO</item>
+        <item>Villes SQLite</item>
+    </string-array> 
+
+ 	Menu PARAMETRAGE	 
+         */
+        public static final int menu_parametrage=0x7f060001;
+        /**  	Menu principal 
+         */
         public static final int menu_principal=0x7f060000;
-        public static final int rech_article=0x7f060001;
+        /**    Liste de parametres de recherhce d'article 
+         */
+        public static final int rech_article=0x7f060004;
     }
     public static final class attr {
     }
@@ -34,47 +61,49 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int in_noir_24_24=0x7f020001;
-        public static final int minus_noir_24_24=0x7f020002;
-        public static final int out_noir_24_24=0x7f020003;
-        public static final int plus_noir_24_24=0x7f020004;
-        public static final int sql=0x7f020005;
-        public static final int voir_noir_24_24=0x7f020006;
+        public static final int logo_crieur=0x7f020002;
+        public static final int minus_noir_24_24=0x7f020003;
+        public static final int out_noir_24_24=0x7f020004;
+        public static final int plus_noir_24_24=0x7f020005;
+        public static final int sql=0x7f020006;
+        public static final int voir_noir_24_24=0x7f020007;
     }
     public static final class id {
         public static final int CheckJournalisteOffre=0x7f0b0029;
         public static final int EditTextJournalisteDateInscription=0x7f0b0028;
-        public static final int LayoutListeJournalistes=0x7f0b002f;
+        public static final int LayoutListeJournalistes=0x7f0b0030;
         public static final int LinearLayout1=0x7f0b0008;
-        public static final int action_settings=0x7f0b0060;
+        public static final int action_settings=0x7f0b0063;
         public static final int article_categorie_detail=0x7f0b0000;
-        public static final int buttonAjoutJournaliste=0x7f0b002e;
+        public static final int buttonAjoutJournaliste=0x7f0b002f;
         public static final int buttonAjouter=0x7f0b0014;
-        public static final int buttonAjouterMotCle=0x7f0b003e;
-        public static final int buttonAjouterRubrique=0x7f0b004c;
-        public static final int buttonAnnuler=0x7f0b0039;
+        public static final int buttonAjouterMotCle=0x7f0b0041;
+        public static final int buttonAjouterRubrique=0x7f0b004f;
+        public static final int buttonAnnuler=0x7f0b003c;
         public static final int buttonCls=0x7f0b0013;
-        public static final int buttonClsMotCle=0x7f0b003d;
-        public static final int buttonClsRubrique=0x7f0b004b;
-        public static final int buttonCommitMotCle=0x7f0b0042;
-        public static final int buttonCommitRubrique=0x7f0b0050;
-        public static final int buttonDernierRubrique=0x7f0b004a;
-        public static final int buttonJrFormCancel=0x7f0b002c;
-        public static final int buttonJrFormDelete=0x7f0b002d;
-        public static final int buttonJrFormValid=0x7f0b002b;
-        public static final int buttonModifierMotCle=0x7f0b0040;
-        public static final int buttonModifierRubrique=0x7f0b004e;
-        public static final int buttonOK=0x7f0b0038;
-        public static final int buttonPrecedentRubrique=0x7f0b0048;
-        public static final int buttonPremierRubrique=0x7f0b0047;
-        public static final int buttonRollbackMotCle=0x7f0b0041;
-        public static final int buttonRollbackRubrique=0x7f0b004f;
-        public static final int buttonSuivantRubrique=0x7f0b0049;
-        public static final int buttonSupprimerMotCle=0x7f0b003f;
-        public static final int buttonSupprimerRubrique=0x7f0b004d;
+        public static final int buttonClsMotCle=0x7f0b0040;
+        public static final int buttonClsRubrique=0x7f0b004e;
+        public static final int buttonCommitMotCle=0x7f0b0045;
+        public static final int buttonCommitRubrique=0x7f0b0053;
+        public static final int buttonDernierRubrique=0x7f0b004d;
+        public static final int buttonJrFormCancel=0x7f0b002d;
+        public static final int buttonJrFormDelete=0x7f0b002e;
+        public static final int buttonJrFormPhoto=0x7f0b002b;
+        public static final int buttonJrFormValid=0x7f0b002c;
+        public static final int buttonModifierMotCle=0x7f0b0043;
+        public static final int buttonModifierRubrique=0x7f0b0051;
+        public static final int buttonOK=0x7f0b003b;
+        public static final int buttonPrecedentRubrique=0x7f0b004b;
+        public static final int buttonPremierRubrique=0x7f0b004a;
+        public static final int buttonRollbackMotCle=0x7f0b0044;
+        public static final int buttonRollbackRubrique=0x7f0b0052;
+        public static final int buttonSuivantRubrique=0x7f0b004c;
+        public static final int buttonSupprimerMotCle=0x7f0b0042;
+        public static final int buttonSupprimerRubrique=0x7f0b0050;
         public static final int editTextChapeau=0x7f0b000c;
-        public static final int editTextIdMotCle=0x7f0b003b;
-        public static final int editTextIdRubrique=0x7f0b0045;
-        public static final int editTextIdentifiant=0x7f0b0035;
+        public static final int editTextIdMotCle=0x7f0b003e;
+        public static final int editTextIdRubrique=0x7f0b0048;
+        public static final int editTextIdentifiant=0x7f0b0038;
         public static final int editTextJournalisteEmail=0x7f0b0023;
         public static final int editTextJournalisteEmailConfirm=0x7f0b0024;
         public static final int editTextJournalisteMotDePasse=0x7f0b0026;
@@ -83,60 +112,62 @@ public final class R {
         public static final int editTextJournalistePhoto=0x7f0b002a;
         public static final int editTextJournalistePrenom=0x7f0b0021;
         public static final int editTextJournalistePseudo=0x7f0b0025;
-        public static final int editTextMotCle=0x7f0b003c;
-        public static final int editTextMotDePasse=0x7f0b0037;
+        public static final int editTextMotCle=0x7f0b003f;
+        public static final int editTextMotDePasse=0x7f0b003a;
         public static final int editTextResume=0x7f0b000e;
-        public static final int editTextRubrique=0x7f0b0046;
+        public static final int editTextRubrique=0x7f0b0049;
         public static final int editTextTexte=0x7f0b0010;
         public static final int editTextTitre=0x7f0b000a;
+        public static final int iconeAccueil=0x7f0b0034;
         public static final int listViewContributeur=0x7f0b0012;
         public static final int listViewMotCle=0x7f0b001a;
-        public static final int lstJournalisteId=0x7f0b0030;
-        public static final int lstJournalisteNom=0x7f0b0031;
-        public static final int lstJournalisteStatut=0x7f0b0032;
-        public static final int nav=0x7f0b0053;
+        public static final int lstJournalisteId=0x7f0b0031;
+        public static final int lstJournalisteNom=0x7f0b0032;
+        public static final int lstJournalisteStatut=0x7f0b0033;
+        public static final int nav=0x7f0b0056;
         public static final int radioGroup1=0x7f0b001d;
         public static final int radioJournalisteMadame=0x7f0b001e;
         public static final int radioJournalisteMonsieur=0x7f0b001f;
+        public static final int rubriqueRubriqueDetail=0x7f0b0035;
         public static final int scrollView1=0x7f0b001c;
         public static final int spinnerCategorie=0x7f0b0018;
         public static final int spinnerJournalisteStatut=0x7f0b0020;
         public static final int spinnerListeSelection=0x7f0b0007;
-        public static final int spinnerMotsCles=0x7f0b003a;
+        public static final int spinnerMotsCles=0x7f0b003d;
         public static final int spinnerRubrique=0x7f0b0016;
-        public static final int textView2=0x7f0b005b;
-        public static final int textView3=0x7f0b005d;
+        public static final int textView2=0x7f0b005e;
+        public static final int textView3=0x7f0b0060;
         public static final int textView4=0x7f0b0017;
-        public static final int textViewCategorieArticle=0x7f0b005e;
+        public static final int textViewCategorieArticle=0x7f0b0061;
         public static final int textViewCategories=0x7f0b001b;
         public static final int textViewChapeau=0x7f0b000b;
         public static final int textViewChapeauArticleCategorieDetail=0x7f0b0004;
-        public static final int textViewChapoArticle=0x7f0b0058;
+        public static final int textViewChapoArticle=0x7f0b005b;
         public static final int textViewContributeur=0x7f0b0011;
-        public static final int textViewContributeurArticle=0x7f0b0057;
-        public static final int textViewDateParutionArticle=0x7f0b0055;
+        public static final int textViewContributeurArticle=0x7f0b005a;
+        public static final int textViewDateParutionArticle=0x7f0b0058;
         public static final int textViewDateParutionArticleCategorieDetail=0x7f0b0003;
         public static final int textViewDecoCategorieDetail=0x7f0b0005;
         public static final int textViewIdArticle=0x7f0b0001;
-        public static final int textViewLogin=0x7f0b0034;
-        public static final int textViewLoginErreur=0x7f0b0033;
+        public static final int textViewLogin=0x7f0b0037;
+        public static final int textViewLoginErreur=0x7f0b0036;
         public static final int textViewMessageArticleList=0x7f0b0006;
-        public static final int textViewMessageMotCle=0x7f0b0043;
-        public static final int textViewMessageRubrique=0x7f0b0051;
+        public static final int textViewMessageMotCle=0x7f0b0046;
+        public static final int textViewMessageRubrique=0x7f0b0054;
         public static final int textViewMotCle=0x7f0b0019;
-        public static final int textViewMotsClesArticle=0x7f0b005f;
-        public static final int textViewNomRubrique=0x7f0b005c;
-        public static final int textViewPar=0x7f0b0056;
-        public static final int textViewPassword=0x7f0b0036;
-        public static final int textViewRechArticle=0x7f0b0044;
+        public static final int textViewMotsClesArticle=0x7f0b0062;
+        public static final int textViewNomRubrique=0x7f0b005f;
+        public static final int textViewPar=0x7f0b0059;
+        public static final int textViewPassword=0x7f0b0039;
+        public static final int textViewRechArticle=0x7f0b0047;
         public static final int textViewResume=0x7f0b000d;
-        public static final int textViewResumeArticle=0x7f0b0059;
+        public static final int textViewResumeArticle=0x7f0b005c;
         public static final int textViewRubrique=0x7f0b0015;
-        public static final int textViewTestDaoMessage=0x7f0b0052;
+        public static final int textViewTestDaoMessage=0x7f0b0055;
         public static final int textViewTexte=0x7f0b000f;
-        public static final int textViewTexteArticle=0x7f0b005a;
+        public static final int textViewTexteArticle=0x7f0b005d;
         public static final int textViewTitre=0x7f0b0009;
-        public static final int textViewTitreArticle=0x7f0b0054;
+        public static final int textViewTitreArticle=0x7f0b0057;
         public static final int textViewTitreArticleCategorieDetail=0x7f0b0002;
     }
     public static final class layout {
@@ -195,7 +226,7 @@ public final class R {
         public static final int id_etat_article=0x7f090019;
         public static final int id_mot_cle=0x7f090017;
         public static final int id_rubrique=0x7f090015;
-        /**   ARTICLE LISTE 
+        /**  ARTICLE LISTE 
          */
         public static final int labelBoutonRetour=0x7f090051;
         public static final int label_civilite=0x7f09003c;
@@ -255,10 +286,13 @@ public final class R {
         public static final int title_activity_etat_article=0x7f09002e;
         public static final int title_activity_journaliste=0x7f090025;
         public static final int title_activity_journaliste_form=0x7f090026;
+        public static final int title_activity_menu_article=0x7f090059;
+        public static final int title_activity_menu_journaliste=0x7f090058;
         /**  MENU PRINCIPAL 
          */
         public static final int title_activity_menu_principal=0x7f090024;
         public static final int title_activity_mot_cle=0x7f09002d;
+        public static final int title_activity_parametrage=0x7f090057;
         public static final int title_activity_rech_article=0x7f09004f;
         public static final int title_activity_rubrique=0x7f09002c;
         public static final int title_activity_sommaire=0x7f090028;

@@ -130,6 +130,8 @@ public class UnArticle extends Activity {
 //				Class.forName("com.mysql.jdbc.Driver");
 //				lcCnx = DriverManager.getConnection("jdbc:mysql://" + lsIP
 //						+ ":" + lsPort + "/" + lsBD, lsUSER, lsMDP);
+				
+				// Utilisation du DAO générique pour la connexion à la base de données
 				lcCnx = DbConnexion.connect(getBaseContext());
 
 				/**
@@ -137,14 +139,19 @@ public class UnArticle extends Activity {
 				 */
 				// Requête préparée pour sélectionner les attributs à afficher
 				lpArticle = lcCnx
-						.prepareStatement("SELECT article.id_article, article.titre_article, article.chapeau_article, article.resume_article, "
-								+ "article.texte_article, article.date_parution_article, contributeur.prenom_contributeur, contributeur.nom_contributeur, rubrique.rubrique, "
-								+ "mot_cle.mot_cle FROM journal2014.rubrique rubrique "
+						.prepareStatement("SELECT article.id_article, article.titre_article, article.chapeau_article, " 
+								+ "article.resume_article, article.texte_article, article.date_parution_article, " 
+								+ "contributeur.prenom_contributeur, contributeur.nom_contributeur, " 
+								+ "rubrique.rubrique, mot_cle.mot_cle FROM journal2014.rubrique rubrique "
 								+ "CROSS JOIN (((journal2014.article_contributeur article_contributeur "
-								+ "INNER JOIN journal2014.article article ON (article_contributeur.id_article = article.id_article)) "
-								+ "INNER JOIN journal2014.contributeur contributeur ON (article_contributeur.id_contributeur = contributeur.id_contributeur)) "
-								+ "INNER JOIN journal2014.article_mot_cle article_mot_cle ON (article_mot_cle.id_article = article.id_article)) "
-								+ "INNER JOIN journal2014.mot_cle mot_cle ON (article_mot_cle.id_mot_cle = mot_cle.id_mot_cle) "
+								+ "INNER JOIN journal2014.article article " 
+								+ "ON (article_contributeur.id_article = article.id_article)) "
+								+ "INNER JOIN journal2014.contributeur contributeur " 
+								+ "ON (article_contributeur.id_contributeur = contributeur.id_contributeur)) "
+								+ "INNER JOIN journal2014.article_mot_cle article_mot_cle " 
+								+ "ON (article_mot_cle.id_article = article.id_article)) "
+								+ "INNER JOIN journal2014.mot_cle mot_cle " 
+								+ "ON (article_mot_cle.id_mot_cle = mot_cle.id_mot_cle) "
 								+ "WHERE article.id_article = " + indexArticle);
 
 				// exécution de la requête
